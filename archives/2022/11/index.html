@@ -281,8 +281,21 @@
 
 
 
-<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","appkey":"bJTS0ZfxmmgU96djhQc4whBd"}</script>
-<script src="/js/third-party/comments/changyan.js"></script>
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","appKey":"bJTS0ZfxmmgU96djhQc4whBd","serverURLs":"https://5fvlcxvo.api.lncldglobal.com","placeholder":"期待你的评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":false,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/archives/2022/11/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
 
 </body>
 </html>

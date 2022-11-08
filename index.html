@@ -212,18 +212,6 @@
 
   
   
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="我的博客搭建 过程" href="/2022/11/06/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%E8%BF%87%E7%A8%8B/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::cf19bd5eb24966568f6ea2045156667d" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
   
 </div>
 
@@ -303,18 +291,6 @@
     </span>
 
   
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="我的第一个博客" href="/2022/11/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::4032b90c72899d9c8712e6dc5b8b3325" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
   
   
 </div>
@@ -397,18 +373,6 @@
 
   
   
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="博客的简单使用" href="/2022/11/05/hello-world/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::0113c848834731b4b1cc499a3f96a3d9" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
   
 </div>
 
@@ -486,8 +450,21 @@
 
 
 
-<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","appkey":"bJTS0ZfxmmgU96djhQc4whBd"}</script>
-<script src="/js/third-party/comments/changyan.js"></script>
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","appKey":"bJTS0ZfxmmgU96djhQc4whBd","serverURLs":"https://5fvlcxvo.api.lncldglobal.com","placeholder":"期待你的评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":false,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
 
 </body>
 </html>
