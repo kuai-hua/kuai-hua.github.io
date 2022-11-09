@@ -20,18 +20,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/red/pace-theme-loading-bar.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"kuai-hua.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"kuai-hua.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="title:Hello,Hexo  快速入门新建一篇文章1$ hexo new &quot;My New Post&quot;">
+    <meta name="description" content="title:Hello,Hexo快速入门新建一篇文章1$ hexo new &quot;My New Post&quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kuai-hua&#39;s Blog">
 <meta property="og:url" content="https://kuai-hua.github.io/2022/11/05/hello-world/index.html">
 <meta property="og:site_name" content="Kuai-hua&#39;s Blog">
-<meta property="og:description" content="title:Hello,Hexo  快速入门新建一篇文章1$ hexo new &quot;My New Post&quot;">
+<meta property="og:description" content="title:Hello,Hexo快速入门新建一篇文章1$ hexo new &quot;My New Post&quot;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-05T02:47:35.673Z">
-<meta property="article:modified_time" content="2022-11-09T03:57:09.663Z">
+<meta property="article:modified_time" content="2022-11-09T05:04:31.544Z">
 <meta property="article:author" content="Kuai-hua">
+<meta property="article:tag" content="SpringMVC,SpringBoot,Mybatis,Mysql,SpringCloud">
 <meta name="twitter:card" content="summary">
 
 
@@ -79,6 +80,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -87,11 +89,37 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -117,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0"><span class="nav-number">1.1.</span> <span class="nav-text">新建一篇文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.2.</span> <span class="nav-text">运行服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">生成静态文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0%E8%BF%9C%E7%A8%8B%E7%AB%99%E7%82%B9"><span class="nav-number">1.4.</span> <span class="nav-text">部署到远程站点</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-Hello-Hexo"><span class="nav-number">1.</span> <span class="nav-text">title:Hello,Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="nav-number">2.</span> <span class="nav-text">快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0"><span class="nav-number">2.1.</span> <span class="nav-text">新建一篇文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.2.</span> <span class="nav-text">运行服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">生成静态文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0%E8%BF%9C%E7%A8%8B%E7%AB%99%E7%82%B9"><span class="nav-number">2.4.</span> <span class="nav-text">部署到远程站点</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -223,16 +251,16 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-11-09 11:57:09" itemprop="dateModified" datetime="2022-11-09T11:57:09+08:00">2022-11-09</time>
+      <time title="修改时间：2022-11-09 13:04:31" itemprop="dateModified" datetime="2022-11-09T13:04:31+08:00">2022-11-09</time>
     </span>
 
   
-    <span id="/2022/11/05/hello-world/" class="post-meta-item leancloud_visitors" data-flag-title="" title="阅读次数">
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
       <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
+      <span id="busuanzi_value_page_pv"></span>
     </span>
   
   <span class="post-meta-item">
@@ -258,9 +286,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <hr>
-<p>title:Hello,Hexo</p>
-<hr>
-<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="新建一篇文章"><a href="#新建一篇文章" class="headerlink" title="新建一篇文章"></a>新建一篇文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="title-Hello-Hexo"><a href="#title-Hello-Hexo" class="headerlink" title="title:Hello,Hexo"></a>title:Hello,Hexo</h2><h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="新建一篇文章"><a href="#新建一篇文章" class="headerlink" title="新建一篇文章"></a>新建一篇文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
@@ -319,6 +345,8 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Kuai-hua</span>
 </div>
+<div class="busuanzi-count">
+</div>
 
     </div>
   </footer>
@@ -328,6 +356,8 @@
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
@@ -335,15 +365,14 @@
   <script src="/js/third-party/pace.js"></script>
 
   
-
-
-  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","app_key":"bJTS0ZfxmmgU96djhQc4whBd","server_url":"https://5fvlcxvo.lc-cn-n1-shared.com","security":true}</script>
-  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
 
-<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","appKey":"bJTS0ZfxmmgU96djhQc4whBd","serverURLs":"https://5fvlcxvo.lc-cn-n1-shared.com","placeholder":"期待你的评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":false,"recordIP":false,"enableQQ":true,"requiredFields":["nick","mail"],"el":"#valine-comments","path":"/2022/11/05/hello-world/"}</script>
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","appKey":"bJTS0ZfxmmgU96djhQc4whBd","serverURLs":"https://5fvlcxvo.lc-cn-n1-shared.com","placeholder":"期待你的评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":true,"enableQQ":true,"requiredFields":["nick","mail"],"el":"#valine-comments","path":"/2022/11/05/hello-world/"}</script>
 <script>
 document.addEventListener('page:loaded', () => {
   NexT.utils.loadComments(CONFIG.valine.el)
