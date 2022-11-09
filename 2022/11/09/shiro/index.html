@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/red/pace-theme-loading-bar.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"kuai-hua.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="1、shiro的学习和使用1.1、三大对象 Subject  SecurityMassager  1234567Subject currentUser &#x3D; SecurityUtil.getSubject();	获得SubjectSession session &#x3D; currentUser.getSession();	通过Subject 获取	 sessionif（！currentUser.isAut">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shiro授权认证与thyleaf的简单使用">
+<meta property="og:url" content="https://kuai-hua.github.io/2022/11/09/shiro/index.html">
+<meta property="og:site_name" content="Kuai-hua&#39;s Blog">
+<meta property="og:description" content="1、shiro的学习和使用1.1、三大对象 Subject  SecurityMassager  1234567Subject currentUser &#x3D; SecurityUtil.getSubject();	获得SubjectSession session &#x3D; currentUser.getSession();	通过Subject 获取	 sessionif（！currentUser.isAut">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-09T01:04:40.000Z">
+<meta property="article:modified_time" content="2022-11-09T01:39:40.204Z">
+<meta property="article:author" content="Kuai-hua">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://kuai-hua.github.io/2022/11/09/shiro/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://kuai-hua.github.io/2022/11/09/shiro/","path":"2022/11/09/shiro/","title":"shiro授权认证与thyleaf的简单使用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>shiro授权认证与thyleaf的简单使用 | Kuai-hua's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Kuai-hua's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81shiro%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">1、shiro的学习和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E3%80%81%E4%B8%89%E5%A4%A7%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、三大对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2%E3%80%81%E7%94%A8%E5%88%B0%E7%9A%84%E4%BE%9D%E8%B5%96%E6%9C%89"><span class="nav-number">1.2.</span> <span class="nav-text">1.2、用到的依赖有</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3%E3%80%81%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%A1%88%E4%BE%8B"><span class="nav-number">1.3.</span> <span class="nav-text">1.3、学习的案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4%E3%80%81html%E4%B8%AD%E4%BB%A3%E7%A0%81%E6%A1%88%E4%BE%8B"><span class="nav-number">1.4.</span> <span class="nav-text">1.4、html中代码案例</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuai-hua"
+      src="https://desk-fd.zol-img.com.cn/t_s1024x768c5/g5/M00/01/0E/ChMkJ1bKweuIdLkyAANw0X0weRcAALGgABSD-sAA3Dp650.jpg">
+  <p class="site-author-name" itemprop="name">Kuai-hua</p>
+  <div class="site-description" itemprop="description">从现在开始</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Kuai-hua" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Kuai-hua" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kuai-hua.github.io/2022/11/09/shiro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://desk-fd.zol-img.com.cn/t_s1024x768c5/g5/M00/01/0E/ChMkJ1bKweuIdLkyAANw0X0weRcAALGgABSD-sAA3Dp650.jpg">
+      <meta itemprop="name" content="Kuai-hua">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kuai-hua's Blog">
+      <meta itemprop="description" content="从现在开始">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="shiro授权认证与thyleaf的简单使用 | Kuai-hua's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          shiro授权认证与thyleaf的简单使用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-11-09 09:04:40 / 修改时间：09:39:40" itemprop="dateCreated datePublished" datetime="2022-11-09T09:04:40+08:00">2022-11-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/11/09/shiro/" class="post-meta-item leancloud_visitors" data-flag-title="shiro授权认证与thyleaf的简单使用" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine：</span>
+  
+    <a title="valine" href="/2022/11/09/shiro/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/11/09/shiro/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="1、shiro的学习和使用"><a href="#1、shiro的学习和使用" class="headerlink" title="1、shiro的学习和使用"></a>1、shiro的学习和使用</h1><h2 id="1-1、三大对象"><a href="#1-1、三大对象" class="headerlink" title="1.1、三大对象"></a>1.1、三大对象</h2><ul>
+<li><p>Subject</p>
+</li>
+<li><p>SecurityMassager</p>
+<blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Subject</span> <span class="variable">currentUser</span> <span class="operator">=</span> SecurityUtil.getSubject();	获得Subject</span><br><span class="line"><span class="type">Session</span> <span class="variable">session</span> <span class="operator">=</span> currentUser.getSession();	通过Subject 获取	 session</span><br><span class="line"><span class="keyword">if</span>（！currentUser.isAuthenticated()）;		判断用户是否被认证</span><br><span class="line">currentUser.getPrincipal();		回顾当前用户的认证</span><br><span class="line">currentUser.hasRole(<span class="string">&quot;schwartz&quot;</span>)		获得用户是否拥有schwartz这个角色</span><br><span class="line">currentUser.isPermitted(<span class="string">&quot;lighsaber.wield&quot;</span>);		获得用户后面的参数</span><br><span class="line">currentUser.logout();		注销</span><br></pre></td></tr></table></figure>
+
+</blockquote>
+<p>  xxxxxxxxxx61 1    <dependencies>2​3        <!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter -->4        <dependency>5            <groupId>org.apache.dubbo</groupId>6            <artifactId>dubbo-spring-boot-starter</artifactId>7            <version>2.7.3</version>8        </dependency>9​10        <!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient -->11        <dependency>12            <groupId>com.github.sgroschupf</groupId>13            <artifactId>zkclient</artifactId>14            <version>0.1</version>15        </dependency>16​17​18        <!--排除日志-->19        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework -->20        <dependency>21            <groupId>org.apache.curator</groupId>22            <artifactId>curator-framework</artifactId>23            <version>2.12.0</version>24        </dependency>25​26​27        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->28        <dependency>29            <groupId>org.apache.curator</groupId>30            <artifactId>curator-recipes</artifactId>31            <version>2.12.0</version>32        </dependency>33​34        <!--排除日志，不然会日志冲突-->35        <!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper -->36        <dependency>37            <groupId>org.apache.zookeeper</groupId>38            <artifactId>zookeeper</artifactId>39            <version>3.4.14</version>40            <exclusions>41                <exclusion>42                    <groupId>org.slf4j</groupId>43                    <artifactId>slf4j-log4j12</artifactId>44                </exclusion>45            </exclusions>46        </dependency>47​48​49​50​51        <dependency>52            <groupId>org.springframework.boot</groupId>53            <artifactId>spring-boot-starter-web</artifactId>54        </dependency>55​56        <dependency>57            <groupId>org.springframework.boot</groupId>58            <artifactId>spring-boot-starter-test</artifactId>59            <scope>test</scope>60        </dependency>61    </dependencies>xml</p>
+</li>
+<li><p>Realm</p>
+  <span id="more"></span>
+<h2 id="1-2、用到的依赖有"><a href="#1-2、用到的依赖有" class="headerlink" title="1.2、用到的依赖有"></a>1.2、用到的依赖有</h2></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.github.theborakompanioni/thymeleaf-extras-shiro --&gt;</span></span><br><span class="line"> <span class="comment">&lt;!--整合Thymeleaf--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.theborakompanioni<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>thymeleaf-extras-shiro<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3、学习的案例"><a href="#1-3、学习的案例" class="headerlink" title="1.3、学习的案例"></a>1.3、学习的案例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kuaihua.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.kuaihua.pojo.User;</span><br><span class="line"><span class="keyword">import</span> com.kuaihua.service.UserService;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.SecurityUtils;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authc.*;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authz.AuthorizationInfo;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authz.SimpleAuthorizationInfo;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.realm.AuthorizingRealm;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.session.Session;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.subject.PrincipalCollection;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.subject.Subject;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserRealm</span> <span class="keyword">extends</span> <span class="title class_">AuthorizingRealm</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserService userService;</span><br><span class="line">    <span class="comment">//授权</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> AuthorizationInfo <span class="title function_">doGetAuthorizationInfo</span><span class="params">(PrincipalCollection principalCollection)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行了 授权  doGetAuthorizationInfo==========&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">SimpleAuthorizationInfo</span> <span class="variable">info</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleAuthorizationInfo</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// info.addStringPermission(&quot;user:add&quot;);</span></span><br><span class="line">        <span class="comment">//拿到当前用户</span></span><br><span class="line">        <span class="type">Subject</span> <span class="variable">subject</span> <span class="operator">=</span> SecurityUtils.getSubject();</span><br><span class="line">        <span class="type">User</span> <span class="variable">currentUser</span> <span class="operator">=</span> (User) subject.getPrincipal();   <span class="comment">// 拿到当前用户信息，这是下面的认证方法new SimpleAuthenticationInfo(user,user.getPwd(),&quot;&quot;)中的user参数</span></span><br><span class="line">        info.addStringPermission(currentUser.getPerms());   <span class="comment">// 从当前用户中获取到需要的权限perms参数</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> info;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//认证</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> AuthenticationInfo <span class="title function_">doGetAuthenticationInfo</span><span class="params">(AuthenticationToken token)</span> <span class="keyword">throws</span> AuthenticationException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行了 认证  doGetAuthenticationInfo==========&quot;</span>);</span><br><span class="line">        <span class="comment">// // 这就是认证，本来是从数据库中取得数据，但是这里先模拟数据</span></span><br><span class="line">        <span class="comment">//     String name = &quot;root&quot;;</span></span><br><span class="line">        <span class="comment">//     String password = &quot;123456&quot;;</span></span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        <span class="comment">//     UsernamePasswordToken userToken = (UsernamePasswordToken) token;</span></span><br><span class="line">        <span class="comment">//     if(!userToken.getUsername().equals(name))&#123;</span></span><br><span class="line">        <span class="comment">//         return null;    // return null 的意思是抛出异常</span></span><br><span class="line">        <span class="comment">//     &#125;</span></span><br><span class="line">        <span class="comment">//     //认证密码，shiro帮我们做了，不用我们做，保证数据的安全性</span></span><br><span class="line">        <span class="comment">//     return new SimpleAuthenticationInfo(&quot;&quot;,password,&quot;&quot;);</span></span><br><span class="line">        <span class="comment">// &#125;   // // 这就是认证，本来是从数据库中取得数据，但是这里先模拟数据</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 从数据库中获取数据</span></span><br><span class="line">        <span class="type">UsernamePasswordToken</span> <span class="variable">userToken</span> <span class="operator">=</span> (UsernamePasswordToken) token;</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> userService.queryUserByName(userToken.getUsername());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (user == <span class="literal">null</span>)&#123;</span><br><span class="line">         <span class="keyword">return</span>  <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="type">Subject</span> <span class="variable">currentSubject</span> <span class="operator">=</span> SecurityUtils.getSubject();</span><br><span class="line">        <span class="type">Session</span> <span class="variable">session</span> <span class="operator">=</span> currentSubject.getSession();</span><br><span class="line">        session.setAttribute(<span class="string">&quot;loginUser&quot;</span>,user);     <span class="comment">// 这里使用session存值，然后再index.html中判断loginUser是有值，如果有就说明有人登录，没有就是没人登录</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//认证密码，shiro帮我们做了，不用我们做，保证数据的安全性=,这里的user需要与上面的授权方法联动，getPrincipal</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">SimpleAuthenticationInfo</span>(user,user.getPwd(),<span class="string">&quot;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>下面的步骤2跟步骤3是死代码，第四个类也是死代码，需要跟Thymeleaf联动</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> at.pollux.thymeleaf.shiro.dialect.ShiroDialect;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.spring.web.ShiroFilterFactoryBean;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.web.mgt.DefaultWebSecurityManager;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Qualifier;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.LinkedHashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ShiroConfig</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ShiroFilterFactoryBean   步骤3</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> ShiroFilterFactoryBean <span class="title function_">shiroFilterFactoryBean</span><span class="params">(<span class="meta">@Qualifier(&quot;securityManager&quot;)</span> DefaultWebSecurityManager defaultWebSecurityManager)</span>&#123;</span><br><span class="line">        <span class="type">ShiroFilterFactoryBean</span> <span class="variable">bean</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ShiroFilterFactoryBean</span>();</span><br><span class="line">        bean.setSecurityManager(defaultWebSecurityManager);</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        *   anon    :   无需认证就可以访问</span></span><br><span class="line"><span class="comment">        *   authc   :   必须认证才可以访问</span></span><br><span class="line"><span class="comment">        *   user    ：   必须拥有记住我功能后才可以使用</span></span><br><span class="line"><span class="comment">        *   perms   ：   必须拥有对某个资源的权限才可以使用</span></span><br><span class="line"><span class="comment">        *   roles   ：   拥有某个角色权限才可以使用</span></span><br><span class="line"><span class="comment">        * */</span></span><br><span class="line">        <span class="comment">// 拦截</span></span><br><span class="line">        Map&lt;String, String&gt; filterMap = <span class="keyword">new</span> <span class="title class_">LinkedHashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// filterMap.put(&quot;/user/add&quot;,&quot;anon&quot;);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// filterMap.put(&quot;/user/update&quot;,&quot;authc&quot;);</span></span><br><span class="line">        <span class="comment">// 正常情况下，未授权的页面会跳到授权的页面中</span></span><br><span class="line">        filterMap.put(<span class="string">&quot;/user/add&quot;</span>,<span class="string">&quot;perms[user:add]&quot;</span>);</span><br><span class="line">        filterMap.put(<span class="string">&quot;/user/update&quot;</span>,<span class="string">&quot;perms[user:update]&quot;</span>);</span><br><span class="line"></span><br><span class="line">        filterMap.put(<span class="string">&quot;/user/*&quot;</span>,<span class="string">&quot;authc&quot;</span>);</span><br><span class="line"></span><br><span class="line">        bean.setFilterChainDefinitionMap(filterMap);</span><br><span class="line"></span><br><span class="line">        bean.setLoginUrl(<span class="string">&quot;/toLogin&quot;</span>);</span><br><span class="line"></span><br><span class="line">        bean.setUnauthorizedUrl(<span class="string">&quot;/unAuth&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// defaultWebSecurityManager    步骤2</span></span><br><span class="line">    <span class="meta">@Bean(name = &quot;securityManager&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> DefaultWebSecurityManager <span class="title function_">defaultWebSecurityManager</span><span class="params">(<span class="meta">@Qualifier(&quot;userRealm&quot;)</span> UserRealm userRealm)</span>&#123;</span><br><span class="line">        <span class="type">DefaultWebSecurityManager</span> <span class="variable">securityManager</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DefaultWebSecurityManager</span>();</span><br><span class="line">        securityManager.setRealm(userRealm);</span><br><span class="line">        <span class="keyword">return</span> securityManager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Realm        步骤1，由下往上写，不走都是确定的，不用记，做好笔记就行，一般记不住</span></span><br><span class="line">    <span class="meta">@Bean(name = &quot;userRealm&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> UserRealm <span class="title function_">userRealm</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">UserRealm</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ShiroDialect,用来整合shiro跟Thymeleaf，死代码，需要跟Thymeleaf联动</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> ShiroDialect <span class="title function_">shiroDialect</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ShiroDialect</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4、html中代码案例"><a href="#1-4、html中代码案例" class="headerlink" title="1.4、html中代码案例"></a>1.4、html中代码案例</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span> </span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:shiro</span>=<span class="string">&quot;http://www.pollix.at/thymeleaf/shiro&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;msg&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--&lt;div th:if=&quot;session.loginUser==null&quot;&gt;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">shiro:notAuthenticated</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span>  <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/toLogin&#125;&quot;</span>&gt;</span> 登录<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">shiro:hasPermission</span>=<span class="string">&quot;user:add&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/user/add&#125;&quot;</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">shiro:hasPermission</span>=<span class="string">&quot;user:update&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/user/update&#125;&quot;</span>&gt;</span>修改<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/09/Druid/" rel="prev" title="Druid数据源springboot相关依赖与配置">
+                  <i class="fa fa-chevron-left"></i> Druid数据源springboot相关依赖与配置
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/09/JSR303/" rel="next" title="JSR303注解的简单使用">
+                  JSR303注解的简单使用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuai-hua</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","app_key":"bJTS0ZfxmmgU96djhQc4whBd","server_url":"https://5fvlcxvo.lc-cn-n1-shared.com","security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","appKey":"bJTS0ZfxmmgU96djhQc4whBd","serverURLs":"https://5fvlcxvo.lc-cn-n1-shared.com","placeholder":"期待你的评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":false,"recordIP":false,"enableQQ":true,"requiredFields":["nick","mail"],"el":"#valine-comments","path":"/2022/11/09/shiro/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+
+</body>
+</html>

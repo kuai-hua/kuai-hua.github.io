@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/red/pace-theme-loading-bar.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"kuai-hua.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Thymeleaf的使用规则 在开头常见的需要引入相关的链接xmlns:th&#x3D;&quot;http:&#x2F;&#x2F;www.thymeleaf.org&#x2F;thymeleaf-extras-shiro&quot;   12345678910&lt;html class&#x3D;&quot;no-js&quot; lang&#x3D;&quot;en&quot;  xmlns:th&#x3D;&quot;http:&#x2F;&#x2F;www.thymelea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Theleaf与springboot整合,在html中的使用">
+<meta property="og:url" content="https://kuai-hua.github.io/2022/11/09/Theleaf/index.html">
+<meta property="og:site_name" content="Kuai-hua&#39;s Blog">
+<meta property="og:description" content="Thymeleaf的使用规则 在开头常见的需要引入相关的链接xmlns:th&#x3D;&quot;http:&#x2F;&#x2F;www.thymeleaf.org&#x2F;thymeleaf-extras-shiro&quot;   12345678910&lt;html class&#x3D;&quot;no-js&quot; lang&#x3D;&quot;en&quot;  xmlns:th&#x3D;&quot;http:&#x2F;&#x2F;www.thymelea">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/Theleaf/image-20221011094359496.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/Theleaf/image-20221011094908321.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/Theleaf/Users/kuaihua/AppData/Roaming/Typora/typora-user-images/image-20221013115857358.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/Theleaf/image-20221013115939759.png">
+<meta property="article:published_time" content="2022-11-09T01:09:41.000Z">
+<meta property="article:modified_time" content="2022-11-09T01:39:34.793Z">
+<meta property="article:author" content="Kuai-hua">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kuai-hua.github.io/2022/11/09/Theleaf/image-20221011094359496.png">
+
+
+<link rel="canonical" href="https://kuai-hua.github.io/2022/11/09/Theleaf/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://kuai-hua.github.io/2022/11/09/Theleaf/","path":"2022/11/09/Theleaf/","title":"Theleaf与springboot整合,在html中的使用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Theleaf与springboot整合,在html中的使用 | Kuai-hua's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Kuai-hua's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Thymeleaf%E7%9A%84%E4%BD%BF%E7%94%A8%E8%A7%84%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text">Thymeleaf的使用规则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96"><span class="nav-number">1.1.</span> <span class="nav-text">依赖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Theleaf%E6%95%B4%E5%90%88"><span class="nav-number">2.</span> <span class="nav-text">Theleaf整合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E6%8F%90%E5%8F%96%E5%92%8C%E4%BD%BF%E7%94%A8%E6%96%87%E4%BB%B6%E5%85%AC%E5%85%B1%E9%83%A8%E5%88%86"><span class="nav-number">2.1.</span> <span class="nav-text">1.1提取和使用文件公共部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-theleaf%E5%AF%B9%E5%88%97%E8%A1%A8%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%E5%BE%AA%E7%8E%AF%E5%AF%BC%E5%87%BA"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 theleaf对列表内容进行循环导出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%88%A9%E7%94%A8theleaf%E5%AE%8C%E6%88%90%E7%82%B9%E8%B0%81%E8%B0%81%E9%AB%98%E4%BA%AE"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 利用theleaf完成点谁谁高亮</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Theleaf%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">Theleaf时间格式转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2-dates-format"><span class="nav-number">3.1.</span> <span class="nav-text">1. 时间格式转换,#dates.format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-theleaf%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%B9%B6%E4%B8%94%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9readonly"><span class="nav-number">3.2.</span> <span class="nav-text">2. theleaf中使用三目运算符,并且不能修改readonly</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4-dates-createNow"><span class="nav-number">3.3.</span> <span class="nav-text">3. 获取当前时间#dates.createNow()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%80%89%E6%8B%A9%E9%A1%B9-%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%B9%E5%BA%94%E7%9A%84%E6%98%AF%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%841"><span class="nav-number">3.4.</span> <span class="nav-text">4. 选择项,管理员对应的是数据库中的1</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuai-hua"
+      src="https://desk-fd.zol-img.com.cn/t_s1024x768c5/g5/M00/01/0E/ChMkJ1bKweuIdLkyAANw0X0weRcAALGgABSD-sAA3Dp650.jpg">
+  <p class="site-author-name" itemprop="name">Kuai-hua</p>
+  <div class="site-description" itemprop="description">从现在开始</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Kuai-hua" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Kuai-hua" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kuai-hua.github.io/2022/11/09/Theleaf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://desk-fd.zol-img.com.cn/t_s1024x768c5/g5/M00/01/0E/ChMkJ1bKweuIdLkyAANw0X0weRcAALGgABSD-sAA3Dp650.jpg">
+      <meta itemprop="name" content="Kuai-hua">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kuai-hua's Blog">
+      <meta itemprop="description" content="从现在开始">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Theleaf与springboot整合,在html中的使用 | Kuai-hua's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Theleaf与springboot整合,在html中的使用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-11-09 09:09:41 / 修改时间：09:39:34" itemprop="dateCreated datePublished" datetime="2022-11-09T09:09:41+08:00">2022-11-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/11/09/Theleaf/" class="post-meta-item leancloud_visitors" data-flag-title="Theleaf与springboot整合,在html中的使用" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine：</span>
+  
+    <a title="valine" href="/2022/11/09/Theleaf/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/11/09/Theleaf/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Thymeleaf的使用规则"><a href="#Thymeleaf的使用规则" class="headerlink" title="Thymeleaf的使用规则"></a>Thymeleaf的使用规则</h1><ul>
+<li><p>在开头常见的需要引入相关的链接<code>xmlns:th=&quot;http://www.thymeleaf.org/thymeleaf-extras-shiro&quot;</code></p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">class</span>=<span class="string">&quot;no-js&quot;</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>  <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org/thymeleaf-extras-shiro&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    xmlns:th=&quot;http://www.thymeleaf.org&quot;</span><br><span class="line">xmlns:sec=&quot;http://www.thymeleaf.org/extras/spring-security&quot;</span><br><span class="line">xmlns:shiro=&quot;http://www.pollix.at/thymeleaf/shiro&quot;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span> </span></span><br><span class="line"><span class="tag">				<span class="attr">xmlns:sec</span>=<span class="string">&quot;http://www.thymeleaf.org/extras/spring-security&quot;</span></span></span><br><span class="line"><span class="tag">				<span class="attr">xmlns:shiro</span>=<span class="string">&quot;http://www.pollix.at/thymeleaf/shiro&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+  <span id="more"></span>
+</li>
+<li><p>表达语法</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">简单表达式：</span><br><span class="line">变量表达式： $ &#123;...&#125;</span><br><span class="line">选择变量表达式： \* &#123;...&#125;</span><br><span class="line">消息表达式： ＃ &#123;...&#125;，国际化要用</span><br><span class="line">链接⽹址表达式： @ &#123;...&#125; 本地连接，src，link，href</span><br><span class="line">⽚段表达式： 〜&#123;...&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><p>springBoot导入的依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity4 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.thymeleaf.extras<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>thymeleaf-extras-springsecurity4<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.4.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.github.theborakompanioni/thymeleaf-extras-shiro --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.theborakompanioni<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>thymeleaf-extras-shiro<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="Theleaf整合"><a href="#Theleaf整合" class="headerlink" title="Theleaf整合"></a>Theleaf整合</h1><h2 id="1-1提取和使用文件公共部分"><a href="#1-1提取和使用文件公共部分" class="headerlink" title="1.1提取和使用文件公共部分"></a>1.1提取和使用文件公共部分</h2><ol>
+<li>文件提取代码<code>th:fragment=&quot;topside&quot;</code></li>
+</ol>
+<p><code> </code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>  <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">			<span class="comment">&lt;!--顶部导航栏提取  th:fragment=&quot;topside&quot;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">&quot;navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0&quot;</span>  == <span class="string">th:fragment</span>=<span class="string">&quot;topside&quot;</span>==&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;navbar-brand col-sm-3 col-md-2 mr-0&quot;</span> <span class="attr">href</span>=<span class="string">&quot;http://getbootstrap.com/docs/4.0/examples/dashboard/#&quot;</span>&gt;</span>[[$&#123;session.LoginUser&#125;]]<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">&quot;form-control form-control-dark w-100&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;Search&quot;</span> <span class="attr">aria-label</span>=<span class="string">&quot;Search&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;navbar-nav px-3&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;nav-item text-nowrap&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;nav-link&quot;</span> <span class="attr">href</span>=<span class="string">&quot;http://getbootstrap.com/docs/4.0/examples/dashboard/#&quot;</span>&gt;</span>Sign out<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			<span class="comment">&lt;!--侧边导航栏  th:fragment=&quot;sidebar&quot; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">&quot;col-md-2 d-none d-md-block bg-light sidebar&quot;</span> <span class="attr">th:fragment</span>=<span class="string">&quot;sidebar&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-sticky&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">h6</span> <span class="attr">class</span>=<span class="string">&quot;sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span>&gt;</span>Saved reports<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;d-flex align-items-center text-muted&quot;</span> <span class="attr">href</span>=<span class="string">&quot;http://getbootstrap.com/docs/4.0/examples/dashboard/#&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;24&quot;</span> <span class="attr">height</span>=<span class="string">&quot;24&quot;</span> <span class="attr">viewBox</span>=<span class="string">&quot;0 0 24 24&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;none&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;currentColor&quot;</span> <span class="attr">stroke-width</span>=<span class="string">&quot;2&quot;</span> <span class="attr">stroke-linecap</span>=<span class="string">&quot;round&quot;</span> <span class="attr">stroke-linejoin</span>=<span class="string">&quot;round&quot;</span> <span class="attr">class</span>=<span class="string">&quot;feather feather-plus-circle&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">&quot;12&quot;</span> <span class="attr">cy</span>=<span class="string">&quot;12&quot;</span> <span class="attr">r</span>=<span class="string">&quot;10&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">circle</span>&gt;</span><span class="tag">&lt;<span class="name">line</span> <span class="attr">x1</span>=<span class="string">&quot;12&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;8&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;12&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;16&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">line</span>&gt;</span><span class="tag">&lt;<span class="name">line</span> <span class="attr">x1</span>=<span class="string">&quot;8&quot;</span> <span class="attr">y1</span>=<span class="string">&quot;12&quot;</span> <span class="attr">x2</span>=<span class="string">&quot;16&quot;</span> <span class="attr">y2</span>=<span class="string">&quot;12&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">line</span>&gt;</span><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>提取 代码的使用 <div th:replace="~{commons/commons::topside}"></div>  第一个commons是文件夹,第二个是commons是html</li>
+<li><img src="/2022/11/09/Theleaf/image-20221011094359496.png" alt="image-20221011094359496"></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--顶栏--&gt;</span><br><span class="line">&lt;div th:replace=&quot;~&#123;commons/commons::topside&#125;&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;container-fluid&quot;&gt;</span><br><span class="line">   &lt;div class=&quot;row&quot;&gt;</span><br><span class="line">      &lt;!--侧边栏--&gt;</span><br><span class="line">      &lt;div th:replace=&quot;~&#123;commons/commons::sidebar(active=&#x27;main.html&#x27;)&#125;&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-theleaf对列表内容进行循环导出"><a href="#1-2-theleaf对列表内容进行循环导出" class="headerlink" title="1.2 theleaf对列表内容进行循环导出"></a>1.2 theleaf对列表内容进行循环导出</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserServiceImpl userService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/allUser&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getAllUser</span><span class="params">(Model model)</span>&#123;</span><br><span class="line">        Collection&lt;User&gt; users = userService.queryAllUser();</span><br><span class="line">        model.addAttribute(<span class="string">&quot;users&quot;</span>,users);</span><br><span class="line">        System.out.println(users);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;emp/list&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">								<span class="comment">&lt;!--/*@thymesVar id=&quot;emps&quot; type=&quot;List&quot;*/--&gt;</span></span><br><span class="line">								<span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">&quot;user:$&#123;users&#125;&quot;</span>&gt;</span></span><br><span class="line">									<span class="comment">&lt;!--/*@thymesVar id=&quot;getId&quot; type=&quot;Class50&quot;*/--&gt;</span></span><br><span class="line">									<span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;user.getId()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">									<span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;user.getUserCode()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">									<span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;user.getUserName()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">									<span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;user.getUserPassword()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">									<span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;user.getGender()==1?&#x27;女&#x27;:&#x27;男&#x27;&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">									<span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#dates.format(user.getBirthday(),&#x27;yyyy-MM-dd&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">									<span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;user.getPhone()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">									<span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;user.getAddress()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">									<span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;user.getUserRole()==1?&#x27;管理员&#x27;:&#x27;用户&#x27;&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">									<span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;user.getCreatedBy()==1?&#x27;管理员&#x27;:&#x27;用户&#x27;&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">									<span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#dates.format(user.getCreationDate(),&#x27;yyyy-MM-dd HH:mm:ss&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">									<span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;user.getModifyBy()==1?&#x27;管理员&#x27;:&#x27;用户&#x27;&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">									<span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#dates.format(user.getModifyDate(),&#x27;yyyy-MM-dd HH:mm:ss&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">									<span class="comment">&lt;!--&lt;td th:text=&quot;$&#123;emp.department.getDepartmentName()&#125;&quot;&gt;&lt;/td&gt;--&gt;</span></span><br><span class="line">									<span class="comment">&lt;!--&lt;td th:text=&quot;$&#123;#dates.format(emp.getBirth(), &#x27;yyyy-MM-dd HH:mm:ss&#x27;)&#125;&quot;&gt;&lt;/td&gt;--&gt;</span></span><br><span class="line">									<span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">										<span class="tag">&lt;<span class="name">a</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-sm btn-primary&quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;#&#125;&quot;</span>&gt;</span>编辑<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">										<span class="tag">&lt;<span class="name">a</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-sm btn-danger&quot;</span><span class="attr">th:href</span>=<span class="string">&quot;@&#123;#&#125;&quot;</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">									<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">								<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结果展示</p>
+<p><img src="/2022/11/09/Theleaf/image-20221011094908321.png" alt="image-20221011094908321"></p>
+<h2 id="1-3-利用theleaf完成点谁谁高亮"><a href="#1-3-利用theleaf完成点谁谁高亮" class="headerlink" title="1.3 利用theleaf完成点谁谁高亮"></a>1.3 利用theleaf完成点谁谁高亮</h2><p>原理,利用replace传参</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:replace</span>=<span class="string">&quot;~&#123;commons/commons::sidebar(active=&#x27;list.html&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:replace</span>=<span class="string">&quot;~&#123;commons/commons::sidebar(active=&#x27;main.html&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>公共页面代码${active&#x3D;&#x3D;’main.html’? ‘nav-link active’:’nav-link’}和${active&#x3D;&#x3D;’list.html’?’nav-link active’:’nav-link’}</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:class</span>=<span class="string">&quot;$&#123;active==&#x27;main.html&#x27;? &#x27;nav-link active&#x27;:&#x27;nav-link&#x27;&#125;&quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/index&#125;&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;24&quot;</span> <span class="attr">height</span>=<span class="string">&quot;24&quot;</span> <span class="attr">viewBox</span>=<span class="string">&quot;0 0 24 24&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;none&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;currentColor&quot;</span> <span class="attr">stroke-width</span>=<span class="string">&quot;2&quot;</span> <span class="attr">stroke-linecap</span>=<span class="string">&quot;round&quot;</span> <span class="attr">stroke-linejoin</span>=<span class="string">&quot;round&quot;</span> <span class="attr">class</span>=<span class="string">&quot;feather feather-home&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">path</span> <span class="attr">d</span>=<span class="string">&quot;M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">polyline</span> <span class="attr">points</span>=<span class="string">&quot;9 22 9 12 15 12 15 22&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line">  首页</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;nav-item&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">th:class</span>=<span class="string">&quot;$&#123;active==&#x27;list.html&#x27;?&#x27;nav-link active&#x27;:&#x27;nav-link&#x27;&#125;&quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/allUser&#125;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;24&quot;</span> <span class="attr">height</span>=<span class="string">&quot;24&quot;</span> <span class="attr">viewBox</span>=<span class="string">&quot;0 0 24 24&quot;</span> <span class="attr">fill</span>=<span class="string">&quot;none&quot;</span> <span class="attr">stroke</span>=<span class="string">&quot;currentColor&quot;</span> <span class="attr">stroke-width</span>=<span class="string">&quot;2&quot;</span> <span class="attr">stroke-linecap</span>=<span class="string">&quot;round&quot;</span> <span class="attr">stroke-linejoin</span>=<span class="string">&quot;round&quot;</span> <span class="attr">class</span>=<span class="string">&quot;feather feather-users&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">path</span> <span class="attr">d</span>=<span class="string">&quot;M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">circle</span> <span class="attr">cx</span>=<span class="string">&quot;9&quot;</span> <span class="attr">cy</span>=<span class="string">&quot;7&quot;</span> <span class="attr">r</span>=<span class="string">&quot;4&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">circle</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">path</span> <span class="attr">d</span>=<span class="string">&quot;M23 21v-2a4 4 0 0 0-3-3.87&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">path</span> <span class="attr">d</span>=<span class="string">&quot;M16 3.13a4 4 0 0 1 0 7.75&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line">    用户管理</span><br><span class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<h1 id="Theleaf时间格式转换"><a href="#Theleaf时间格式转换" class="headerlink" title="Theleaf时间格式转换"></a>Theleaf时间格式转换</h1><h2 id="1-时间格式转换-dates-format"><a href="#1-时间格式转换-dates-format" class="headerlink" title="1. 时间格式转换,#dates.format"></a>1. 时间格式转换,#dates.format</h2><p><code>#dates.format(time,&#39;yyyy/MM/dd HH:mm:ss&#39;) </code></p>
+<h2 id="2-theleaf中使用三目运算符-并且不能修改readonly"><a href="#2-theleaf中使用三目运算符-并且不能修改readonly" class="headerlink" title="2. theleaf中使用三目运算符,并且不能修改readonly"></a>2. theleaf中使用三目运算符,并且不能修改readonly</h2><p>NullPointerException判断是否为空指针,</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;user.getCreationDate()==NullPointerException?#dates.format(time,&#x27;yyyy/MM/dd HH:mm:ss&#x27;):#dates.format(user.getCreationDate(),&#x27;yyyy/MM/dd HH:mm:ss&#x27;)&#125;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;creationDate&quot;</span><span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;2011/11/12&quot;</span> <span class="attr">readonly</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-获取当前时间-dates-createNow"><a href="#3-获取当前时间-dates-createNow" class="headerlink" title="3. 获取当前时间#dates.createNow()"></a>3. 获取当前时间#dates.createNow()</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;#dates.format(#dates.createNow(),&#x27;yyyy/MM/dd HH:mm:ss&#x27;)&#125;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;modifyDate&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;2000/1/1&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-选择项-管理员对应的是数据库中的1"><a href="#4-选择项-管理员对应的是数据库中的1" class="headerlink" title="4. 选择项,管理员对应的是数据库中的1"></a>4. 选择项,管理员对应的是数据库中的1</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">label</span>&gt;</span>创建者<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-check form-check-inline&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">th:checked</span>=<span class="string">&quot;$&#123;user.getUserRole()==1&#125;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-check-input&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;createdBy&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;form-check-label&quot;</span>&gt;</span>管理员<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-check form-check-inline&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">th:checked</span>=<span class="string">&quot;$&#123;user.getUserRole()==2&#125;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-check-input&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;createdBy&quot;</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;form-check-label&quot;</span>&gt;</span>会员<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-check form-check-inline&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">th:checked</span>=<span class="string">&quot;$&#123;user.getUserRole()==3&#125;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-check-input&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;createdBy&quot;</span> <span class="attr">value</span>=<span class="string">&quot;3&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;form-check-label&quot;</span>&gt;</span>用户<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/11/09/Theleaf/Users\kuaihua\AppData\Roaming\Typora\typora-user-images\image-20221013115857358.png" alt="image-20221013115857358"></p>
+<p><img src="/2022/11/09/Theleaf/image-20221013115939759.png" alt="image-20221013115939759"></p>
+<p>这就是结果</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/09/JSR303/" rel="prev" title="JSR303注解的简单使用">
+                  <i class="fa fa-chevron-left"></i> JSR303注解的简单使用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/09/application-yml%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/" rel="next" title="application.yml常用配置各种组件在springboot的yml文件中的配置">
+                  application.yml常用配置各种组件在springboot的yml文件中的配置 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuai-hua</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","app_key":"bJTS0ZfxmmgU96djhQc4whBd","server_url":"https://5fvlcxvo.lc-cn-n1-shared.com","security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","appKey":"bJTS0ZfxmmgU96djhQc4whBd","serverURLs":"https://5fvlcxvo.lc-cn-n1-shared.com","placeholder":"期待你的评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":false,"recordIP":false,"enableQQ":true,"requiredFields":["nick","mail"],"el":"#valine-comments","path":"/2022/11/09/Theleaf/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+
+</body>
+</html>

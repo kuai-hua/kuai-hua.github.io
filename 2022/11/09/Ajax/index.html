@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/red/pace-theme-loading-bar.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"kuai-hua.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Ajax：把页面是否跳转的决定权交给了前段AJAX &#x3D; Asynchronous JavaScript and XML. AJAX 是一种用于创建快速动态网页的技术。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ajax">
+<meta property="og:url" content="https://kuai-hua.github.io/2022/11/09/Ajax/index.html">
+<meta property="og:site_name" content="Kuai-hua&#39;s Blog">
+<meta property="og:description" content="Ajax：把页面是否跳转的决定权交给了前段AJAX &#x3D; Asynchronous JavaScript and XML. AJAX 是一种用于创建快速动态网页的技术。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-09T00:33:12.000Z">
+<meta property="article:modified_time" content="2022-11-09T01:41:15.985Z">
+<meta property="article:author" content="Kuai-hua">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://kuai-hua.github.io/2022/11/09/Ajax/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://kuai-hua.github.io/2022/11/09/Ajax/","path":"2022/11/09/Ajax/","title":"Ajax"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Ajax | Kuai-hua's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Kuai-hua's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ajax%EF%BC%9A%E6%8A%8A%E9%A1%B5%E9%9D%A2%E6%98%AF%E5%90%A6%E8%B7%B3%E8%BD%AC%E7%9A%84%E5%86%B3%E5%AE%9A%E6%9D%83%E4%BA%A4%E7%BB%99%E4%BA%86%E5%89%8D%E6%AE%B5"><span class="nav-number">1.</span> <span class="nav-text">Ajax：把页面是否跳转的决定权交给了前段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E9%9D%A2%E6%98%AFAjax%E7%9A%84%E5%9B%BA%E5%AE%9A%E8%AF%AD%E6%B3%95%EF%BC%8C%E4%BD%86%E6%98%AF%E5%BF%85%E8%A6%81%E7%9A%84%E5%8F%AA%E6%9C%89%E4%BA%8C%E4%B8%AA"><span class="nav-number">1.0.1.</span> <span class="nav-text">下面是Ajax的固定语法，但是必要的只有二个</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%85%E8%A6%81%E7%9A%84%E4%B8%89%E4%B8%AA"><span class="nav-number">1.0.2.</span> <span class="nav-text">必要的三个</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.1.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Ajax%E4%B8%89%E9%83%A8%E6%9B%B2%EF%BC%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">使用Ajax三部曲：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%BC%96%E5%86%99%E5%AF%B9%E5%BA%94%E7%9A%84Controller%EF%BC%8C%E8%BF%94%E5%9B%9E%E6%B6%88%E6%81%AF%E6%88%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%88%96%E8%80%85json%E6%A0%BC%E5%BC%8F%E6%95%B0%E6%8D%AE%EF%BC%9B"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1.编写对应的Controller，返回消息或字符串或者json格式数据；</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%BC%96%E5%86%99ajax%E8%AF%B7%E6%B1%82"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">2.编写ajax请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-url-controller%E8%AF%B7%E6%B1%82"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">1.url:controller请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-data%EF%BC%9A%E9%94%AE%E5%80%BC%E5%AF%B9%EF%BC%8C%E5%8F%AF%E4%BB%A5%E4%B8%8D%E5%AE%9A%E4%B9%89undefined"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">2.data：键值对，可以不定义undefined</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-success%EF%BC%9A%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">3.success：回调函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.2.</span> <span class="nav-text">
+</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%BB%99Ajax%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6%EF%BC%8C%E7%82%B9%E5%87%BB-click%EF%BC%8C%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9onblur%EF%BC%8C%E9%94%AE%E7%9B%98%E5%BC%B9%E8%B5%B7keyup"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">3.给Ajax绑定事件，点击.click，失去焦点onblur，键盘弹起keyup</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E9%9D%A2%E6%98%AF%E4%B8%80%E4%B8%AAajax%E6%A1%88%E4%BE%8B"><span class="nav-number">1.2.</span> <span class="nav-text">下面是一个ajax案例</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuai-hua"
+      src="https://desk-fd.zol-img.com.cn/t_s1024x768c5/g5/M00/01/0E/ChMkJ1bKweuIdLkyAANw0X0weRcAALGgABSD-sAA3Dp650.jpg">
+  <p class="site-author-name" itemprop="name">Kuai-hua</p>
+  <div class="site-description" itemprop="description">从现在开始</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Kuai-hua" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Kuai-hua" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kuai-hua.github.io/2022/11/09/Ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://desk-fd.zol-img.com.cn/t_s1024x768c5/g5/M00/01/0E/ChMkJ1bKweuIdLkyAANw0X0weRcAALGgABSD-sAA3Dp650.jpg">
+      <meta itemprop="name" content="Kuai-hua">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kuai-hua's Blog">
+      <meta itemprop="description" content="从现在开始">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Ajax | Kuai-hua's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ajax
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-11-09 08:33:12 / 修改时间：09:41:15" itemprop="dateCreated datePublished" datetime="2022-11-09T08:33:12+08:00">2022-11-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Ajax/" itemprop="url" rel="index"><span itemprop="name">Ajax</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/11/09/Ajax/" class="post-meta-item leancloud_visitors" data-flag-title="Ajax" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine：</span>
+  
+    <a title="valine" href="/2022/11/09/Ajax/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/11/09/Ajax/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Ajax：把页面是否跳转的决定权交给了前段"><a href="#Ajax：把页面是否跳转的决定权交给了前段" class="headerlink" title="Ajax：把页面是否跳转的决定权交给了前段"></a>Ajax：把页面是否跳转的决定权交给了前段</h1><p>AJAX &#x3D; Asynchronous JavaScript and XML.</p>
+<p>AJAX 是一种用于创建快速动态网页的技术。</p>
+<span id="more"></span>
+
+<p>AJAX 通过在后台与服务器进行少量数据交换，使网页实现异步更新。这意味着可以在不重载整个页面的情况下，对网页的某些部分进行更新。</p>
+<h3 id="下面是Ajax的固定语法，但是必要的只有二个"><a href="#下面是Ajax的固定语法，但是必要的只有二个" class="headerlink" title="下面是Ajax的固定语法，但是必要的只有二个"></a>下面是Ajax的固定语法，但是必要的只有二个</h3><p>$.ajax({  </p>
+<p>​	url: ‘’, </p>
+<p>​	type: ‘post’,  </p>
+<p>​	data : {‘name’: ‘sgt’, ‘pwd’: ‘123’},  ，这里的数据就是需要携带回去给后台判断的参数</p>
+<p>​	</p>
+<p>​	success:function (data) {</p>
+<p>​	swal({</p>
+<p>​	title: ‘AJAX’,</p>
+<p>​	text: ‘模拟这里显示了返回的数据’,</p>
+<p>​	icon: ‘success’,</p>
+<p>​	button: ‘OK’,</p>
+<p>})</p>
+<h3 id="必要的三个"><a href="#必要的三个" class="headerlink" title="必要的三个"></a>必要的三个</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;  </span><br><span class="line"></span><br><span class="line">	url: &#x27;&#x27;, &#123;#不写默认朝当前页面发请求#&#125;</span><br><span class="line"></span><br><span class="line">	type: &#x27;post&#x27;,  &#123;#请求方式#&#125;</span><br><span class="line"></span><br><span class="line">	data : &#123;&#x27;name&#x27;: &#x27;sgt&#x27;, &#x27;pwd&#x27;: &#x27;123&#x27;&#125;,  &#123;#发送的请求数据#&#125;</span><br><span class="line"></span><br><span class="line">	&#123;#这里的data就是回调函数success获取到的后端响应返回的数据#&#125;</span><br><span class="line"></span><br><span class="line">	回调函数：就是要发挥的数据(个人理解)</span><br><span class="line"></span><br><span class="line">&#125;）</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>或者</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$.post(&#123;  </span><br><span class="line"></span><br><span class="line">	url: <span class="string">&#x27;&#x27;</span>&#123;<span class="comment">#不写默认朝当前页面发请求#&#125;&quot;</span></span><br><span class="line"></span><br><span class="line">	data : &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;sgt&#x27;</span>, <span class="string">&#x27;pwd&#x27;</span>: <span class="string">&#x27;123&#x27;</span>&#125;,  &#123;<span class="comment">#发送的请求数据#&#125;，这里可以默认为空</span></span><br><span class="line"></span><br><span class="line">	&#123;<span class="comment">#这里的data就是回调函数success获取到的后端响应返回的数据#&#125;</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用jQuery就导jQUery，使用Vue就导入Vue，两个都用，自己原生态实现</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用Ajax三部曲："><a href="#使用Ajax三部曲：" class="headerlink" title="使用Ajax三部曲："></a>使用Ajax三部曲：</h3><h4 id="1-编写对应的Controller，返回消息或字符串或者json格式数据；"><a href="#1-编写对应的Controller，返回消息或字符串或者json格式数据；" class="headerlink" title="1.编写对应的Controller，返回消息或字符串或者json格式数据；"></a>1.编写对应的Controller，返回消息或字符串或者json格式数据；</h4><h4 id="2-编写ajax请求"><a href="#2-编写ajax请求" class="headerlink" title="2.编写ajax请求"></a>2.编写ajax请求</h4><h4 id="1-url-controller请求"><a href="#1-url-controller请求" class="headerlink" title="1.url:controller请求"></a>1.url:controller请求</h4><h4 id="2-data：键值对，可以不定义undefined"><a href="#2-data：键值对，可以不定义undefined" class="headerlink" title="2.data：键值对，可以不定义undefined"></a>2.data：键值对，可以不定义undefined</h4><h4 id="3-success：回调函数"><a href="#3-success：回调函数" class="headerlink" title="3.success：回调函数"></a>3.success：回调函数</h4><h3>
+</h3>
+
+<h4 id="3-给Ajax绑定事件，点击-click，失去焦点onblur，键盘弹起keyup"><a href="#3-给Ajax绑定事件，点击-click，失去焦点onblur，键盘弹起keyup" class="headerlink" title="3.给Ajax绑定事件，点击.click，失去焦点onblur，键盘弹起keyup"></a>3.给Ajax绑定事件，点击.click，失去焦点onblur，键盘弹起keyup</h4><h2 id="下面是一个ajax案例"><a href="#下面是一个ajax案例" class="headerlink" title="下面是一个ajax案例"></a>下面是一个ajax案例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AjaxController</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/t2&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> List&lt;User&gt; <span class="title function_">test2</span><span class="params">()</span>&#123;</span><br><span class="line">        List&lt;User&gt; userList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        userList.add(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">1</span>,<span class="string">&quot;kuaihua&quot;</span>,<span class="string">&quot;123456&quot;</span>));</span><br><span class="line">        userList.add(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">2</span>,<span class="string">&quot;kuaihua1&quot;</span>,<span class="string">&quot;1234516&quot;</span>));</span><br><span class="line">        userList.add(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">3</span>,<span class="string">&quot;kuaihua2&quot;</span>,<span class="string">&quot;1234536&quot;</span>));</span><br><span class="line">        userList.add(<span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">4</span>,<span class="string">&quot;kuaihua3&quot;</span>,<span class="string">&quot;1234563&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> userList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function ()&#123;</span><br><span class="line"></span><br><span class="line">            $(<span class="string">&quot;#btn&quot;</span>).click(function () &#123;</span><br><span class="line">                    <span class="comment">// 这里的function(data)代表的数据就是t2中返回的userList数据</span></span><br><span class="line">                    $.post(<span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/t2&quot;</span>,function(data) &#123;</span><br><span class="line">                        console.log(data)</span><br><span class="line">                        <span class="type">var</span> <span class="variable">html</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="type">let</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; data.length; i++) &#123;</span><br><span class="line">                            html +=<span class="string">&quot;&lt;tr&gt;&quot;</span>+</span><br><span class="line">                                <span class="string">&quot;&lt;td&gt;&quot;</span> +data[i].id+<span class="string">&quot;&lt;/td&gt;&quot;</span>+</span><br><span class="line">                                <span class="string">&quot;&lt;td&gt;&quot;</span> +data[i].name+<span class="string">&quot;&lt;/td&gt;&quot;</span>+</span><br><span class="line">                                <span class="string">&quot;&lt;td&gt;&quot;</span> +data[i].password+<span class="string">&quot;&lt;/td&gt;&quot;</span>+</span><br><span class="line">                                <span class="string">&quot;&lt;/tr&gt;&quot;</span></span><br><span class="line"></span><br><span class="line">                        &#125;</span><br><span class="line">                        $(<span class="string">&quot;#context&quot;</span>).html(html);</span><br><span class="line">                    &#125;)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;input type=<span class="string">&quot;button&quot;</span> value=<span class="string">&quot;加载数据&quot;</span> id=<span class="string">&quot;btn&quot;</span>&gt;</span><br><span class="line">    &lt;table&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;id&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;姓名&lt;/td&gt;</span><br><span class="line">            &lt;td&gt;密码&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tbody id=<span class="string">&quot;context&quot;</span>&gt;</span><br><span class="line">			&lt;%--        这里就显得很空--%&gt;</span><br><span class="line">            &lt;%--        这里显示从后台加载的数据--%&gt;</span><br><span class="line">        &lt;/tbody&gt;</span><br><span class="line">    &lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/08/Linux/" rel="prev" title="Linux相关笔记">
+                  <i class="fa fa-chevron-left"></i> Linux相关笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/09/Druid/" rel="next" title="Druid数据源springboot相关依赖与配置">
+                  Druid数据源springboot相关依赖与配置 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuai-hua</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","app_key":"bJTS0ZfxmmgU96djhQc4whBd","server_url":"https://5fvlcxvo.lc-cn-n1-shared.com","security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","appKey":"bJTS0ZfxmmgU96djhQc4whBd","serverURLs":"https://5fvlcxvo.lc-cn-n1-shared.com","placeholder":"期待你的评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":false,"recordIP":false,"enableQQ":true,"requiredFields":["nick","mail"],"el":"#valine-comments","path":"/2022/11/09/Ajax/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+
+</body>
+</html>
