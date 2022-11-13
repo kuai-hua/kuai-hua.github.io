@@ -973,9 +973,7 @@
 <h2 id="修改页面加载动画"><a href="#修改页面加载动画" class="headerlink" title="修改页面加载动画"></a>修改页面加载动画</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">主题的_config.yml搜索pace修改里面的样式就行</span><br></pre></td></tr></table></figure>
 
 
-
-
-
+<h2 id="参考优化"><a href="#参考优化" class="headerlink" title="参考优化"></a>参考优化</h2><p><a href="https://zhuanlan.zhihu.com/p/373293888">参考主题优化</a></p>
 <h2 id="Valine的评论设置"><a href="#Valine的评论设置" class="headerlink" title="Valine的评论设置"></a>Valine的评论设置</h2><p><a href="https://console.leancloud.cn/">Leancloud注册登录网址</a></p>
 <p><a href="https://blog.csdn.net/weixin_43167980/article/details/113779387">注册参考网址</a></p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">leancloud_visitors:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">app_id:</span> <span class="string">5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz</span> <span class="comment"># &lt;your app id&gt;你自己的leancloud appid</span></span><br><span class="line">  <span class="attr">app_key:</span> <span class="string">bJTS0ZxmmgU96djhQc4whBd</span> <span class="comment"># &lt;your app key&gt;</span></span><br><span class="line">  <span class="comment"># Required for apps from CN region</span></span><br><span class="line">  <span class="attr">server_url:</span> <span class="string">https://5fvlcxvo.lc-cn-n1-shared.com</span> <span class="comment"># &lt;your server url&gt;</span></span><br><span class="line">  <span class="comment"># Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security</span></span><br><span class="line">  <span class="comment"># If you don&#x27;t care about security in leancloud counter and just want to use it directly</span></span><br><span class="line">  <span class="comment"># (without hexo-leancloud-counter-security plugin), set `security` to `false`.</span></span><br><span class="line">  <span class="attr">security:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">valine:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">appId:</span>  <span class="string">5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz</span> <span class="comment">#你的leancloud里面的AppID</span></span><br><span class="line">  <span class="attr">appKey:</span>  <span class="string">bJTS0ZxmmgU96djhQc4whBd</span> <span class="comment">#你的leancloud里面的AppKey</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">期待你的评论</span> <span class="comment"># Comment box placeholder</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span> <span class="comment"># gravatar style</span></span><br><span class="line">  <span class="attr">meta:</span> [<span class="string">nick</span>, <span class="string">mail</span>, <span class="string">link</span>] <span class="comment"># Custom comment header</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment"># pagination size</span></span><br><span class="line">  <span class="attr">lang:</span> <span class="string">zh-cn</span> <span class="comment"># Language, available values: en, zh-cn</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span> <span class="comment">#文章阅读量统计  </span></span><br><span class="line">  <span class="attr">comment_count:</span> <span class="literal">false</span> <span class="comment"># If false, comment count will only be displayed in post page, not in home page 评论计数</span></span><br><span class="line">  <span class="attr">serverURLs:</span>  <span class="comment">#REST API服务器地址 https://。。。。 # 这里必须写,不然评论提交不了,rest api也是在leancloud安全设置中看,</span></span><br><span class="line">  <span class="attr">recordIP:</span> <span class="literal">false</span>  <span class="comment"># Whether to record the commenter IP</span></span><br><span class="line">  <span class="attr">enableQQ:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">requiredFields:</span> [<span class="string">nick</span>, <span class="string">mail</span>] <span class="comment"># Set required fields: [nick] | [nick, mail] 要求写评论必须要写昵称和邮箱,啥都不加,或者写[nick]</span></span><br></pre></td></tr></table></figure>
@@ -1431,6 +1429,230 @@
 </configuration>]]></content>
       <categories>
         <category>Mybatis</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>java基础知识回顾</title>
+    <url>/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<p>&#x3D;&#x3D;查漏补缺,没有写细节,细节大都都懂&#x3D;&#x3D;</p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h4 id="java-数据类型优先级"><a href="#java-数据类型优先级" class="headerlink" title="java 数据类型优先级"></a><a href="https://www.cnblogs.com/jasonlai2016/p/11654946.html">java 数据类型优先级</a></h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">由低到高:</span><br><span class="line">byte,short,char—&gt; int —&gt; long—&gt; <span class="built_in">float</span> —&gt; double</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<ol>
+<li><p>不能对boolean类型进行类型转换。</p>
+</li>
+<li><p>不能把对象类型转换成不相关类的对象。</p>
+</li>
+<li><p>在把容量大的类型转换为容量小的类型时必须使用强制类型转换。</p>
+</li>
+<li><p>转换过程中可能导致溢出或损失精度</p>
+</li>
+<li><p>浮点数到整数的转换是通过舍弃小数得到，而不是四舍五入</p>
+</li>
+<li><p>知识点:最好不要使用浮点数进行比较,原因:因为浮点数是有限的,有舍入误差</p>
+</li>
+</ol>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221111103543315.png" alt="image-20221111103543315"></p>
+<h3 id="常量-staic-final"><a href="#常量-staic-final" class="headerlink" title="常量(staic ,final)"></a>常量(staic ,final)</h3><p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221111105910072.png" alt="image-20221111105910072"></p>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221111110053513.png" alt="image-20221111110053513"></p>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221111182517761.png" alt="image-20221111182517761"></p>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221111182923042.png" alt="image-20221111182923042"></p>
+<h3 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h3><h4 id="Scanner对象"><a href="#Scanner对象" class="headerlink" title="Scanner对象"></a>Scanner对象</h4><p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221111183724132.png" alt="image-20221111183724132"></p>
+<h4 id="eg"><a href="#eg" class="headerlink" title="eg:"></a>eg:</h4><p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221111184236621.png" alt="image-20221111184236621"></p>
+<h4 id="next-与nextLine"><a href="#next-与nextLine" class="headerlink" title="next()与nextLine()"></a>next()与nextLine()</h4><p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221111184756108.png" alt="image-20221111184756108"></p>
+<h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. 顺序结构(所有的程序都有)</span><br><span class="line">2. 选择结构(<span class="keyword">if</span>,switch ... case..break)</span><br><span class="line">3. 循环结构(<span class="keyword">while</span>,<span class="keyword">for</span>,do...while(代码至少被执行了一次))</span><br><span class="line">	- <span class="keyword">while</span>(<span class="literal">true</span>)  伪代码,死循环,尽量避免</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221111200408365.png" alt="image-20221111200408365"></p>
+<h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><h4 id="switch-…case-常与break连用"><a href="#switch-…case-常与break连用" class="headerlink" title="switch …case(常与break连用)"></a>switch …case(常与break连用)</h4><p>不予break连用,会出现case穿透问题</p>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221111200756738.png" alt="image-20221111200756738"></p>
+<p>在jdk7以后才支持字符串的比较</p>
+<h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><p>最有效,灵活的循环结构</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">idea快捷键: 100.<span class="keyword">for</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kuaihua.struct;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ForDemo01</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> []numbers = &#123;<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>&#125;;      <span class="comment">// 定义一个数组</span></span><br><span class="line">        <span class="comment">// 第一种方式</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; numbers.length; i++) &#123;</span><br><span class="line">            System.out.println(numbers[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;=========================&quot;</span>);</span><br><span class="line">        <span class="comment">// 第二种方式(简化) 快捷方式 :numbers.for</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i : numbers) &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="break与continue的区别"><a href="#break与continue的区别" class="headerlink" title="break与continue的区别"></a>break与continue的区别</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">break</span>只是结束本次循环,不会结束上一级的循环</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ForDemo02</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; <span class="number">100</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">while</span> (j==<span class="number">30</span>) &#123;</span><br><span class="line">                    System.out.println(<span class="number">30</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">            <span class="keyword">if</span> (i==<span class="number">20</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221111213648471.png" alt="image-20221111213648471"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ForDemo03</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; <span class="number">100</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (j&gt;<span class="number">10</span>)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                System.out.println(<span class="string">&quot;j=====&gt;&quot;</span> + j);</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">&quot;i=====&gt;&quot;</span> + i);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221111214226916.png" alt="image-20221111214226916"></p>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221111212743835.png" alt="image-20221111212743835"></p>
+<h3 id="编译与反编译文件"><a href="#编译与反编译文件" class="headerlink" title="编译与反编译文件"></a>编译与反编译文件</h3><p>编译文件:java(我们可以看懂)–&gt;class(乱码)</p>
+<p>反编译:class—&gt;java</p>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221111201503358.png" alt="image-20221111201503358"><br>每一个对象都有一个通过算法获取的hashcode,通过对比hashcode的不同就可以知道两个值是不是一样,这样才可以进行string的比较</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>什么是方法:</p>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112100407495.png" alt="image-20221112100407495"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="number">0</span>;   <span class="comment">// 还有终止方法的作用,如果需要终止某个任务的话</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h4><p>什么是重载:方法重载的要求是两同一不同：&#x3D;&#x3D;同一个类&#x3D;&#x3D;中方法名相同，参数列表不同。至于方法的其他部分，如方法返回值类型、修饰符等，与方法重载没有任何关系。</p>
+<p><strong>方法重载的要求是两同一不同：同一个类中方法名相同，参数列表不同。至于方法的其他部分，如方法返回值类型、修饰符等，与方法重载没有任何关系。</strong></p>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112104701274.png" alt="image-20221112104701274"></p>
+<h4 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h4><p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112220651049.png" alt="image-20221112220651049"><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112221516190.png" alt="image-20221112221516190"> </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">重写有参构造后无参构造就会失效,所以在加上有参构造的时候都会先加上无参构造,不然会报错,很多方法调用不了</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112105641342.png" alt="image-20221112105641342"></p>
+<h3 id="传递"><a href="#传递" class="headerlink" title="传递"></a>传递</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">传递方式:</span><br><span class="line">	- 值传递</span><br><span class="line">	- 引用传递</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>&#x3D;&#x3D;java都是值传递&#x3D;&#x3D;</p>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112122236193.png" alt="image-20221112122236193"></p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112123450614.png" alt="image-20221112123450614"></p>
+<h4 id="数组特点"><a href="#数组特点" class="headerlink" title="数组特点"></a>数组特点</h4><p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/Hexo\hexoblog\source_posts\java基础复习\image-20221112130202571.png" alt="image-20221112130202571"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- 长度确定不可以修改</span><br><span class="line">- 元素必须是相同类型的,创建很好记,int为整型,那么[]为数组(个人理解)</span><br><span class="line">- 数组元素可以是任何类型,可以是基本类型,也可以是引用类型,eg:new Man()</span><br><span class="line">- 数组变量属于引用类型,数组可以看成对象,数组中每个元素相当于对象的成员变量</span><br><span class="line">- 数组本身是对象,对象放在<span class="comment">#堆中# </span></span><br></pre></td></tr></table></figure>
+
+<p>数组一旦创建就不可以修改,页有他们的初始值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayDemo02</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] nums= <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">10</span>];</span><br><span class="line">        <span class="type">long</span>[] longs = <span class="keyword">new</span> <span class="title class_">long</span>[<span class="number">10</span>];</span><br><span class="line">        String[] strings= <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">10</span>];</span><br><span class="line">        <span class="type">double</span>[] doubles= <span class="keyword">new</span> <span class="title class_">double</span>[<span class="number">10</span>];</span><br><span class="line">        <span class="type">char</span>[] chars= <span class="keyword">new</span> <span class="title class_">char</span>[<span class="number">10</span>];</span><br><span class="line">        <span class="type">boolean</span>[] booleans = <span class="keyword">new</span> <span class="title class_">boolean</span>[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;nums 初始值&quot;</span> + nums[<span class="number">0</span>]);</span><br><span class="line">        System.out.println(<span class="string">&quot;longs 初始值&quot;</span> + longs[<span class="number">0</span>]);</span><br><span class="line">        System.out.println(<span class="string">&quot;strings 初始值&quot;</span> +strings[<span class="number">0</span>]);</span><br><span class="line">        System.out.println(<span class="string">&quot;doubles 初始值&quot;</span> +doubles[<span class="number">0</span>]);</span><br><span class="line">        System.out.println(<span class="string">&quot;chars 初始值&quot;</span> +chars[<span class="number">0</span>]);</span><br><span class="line">        System.out.println(<span class="string">&quot;booleans 初始值&quot;</span> +booleans[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">=========================================================</span><br><span class="line">nums 初始值<span class="number">0</span></span><br><span class="line">longs 初始值<span class="number">0</span></span><br><span class="line">strings 初始值<span class="literal">null</span></span><br><span class="line">doubles 初始值<span class="number">0.0</span></span><br><span class="line">chars 初始值 </span><br><span class="line">booleans 初始值<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组:"></a>二维数组:</h4><p>int 类型的一维数组,元素都是整数,</p>
+<h4 id="稀疏数组"><a href="#稀疏数组" class="headerlink" title="稀疏数组"></a>稀疏数组</h4><p>记录有数组(记作A数组)中不为默认值的数组的位置,保存在另一个数组(记作 B数组)中,另一个数组的第一行分别记录第一个数组A的二维(行列数),第三个记录A数组中不为0的元素个数</p>
+<p>然后在B数组中记录A数组中元素值不为0的元素在数组A中的位置,并记录它的值</p>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112194635096.png" alt="image-20221112194635096"></p>
+<h3 id="Array类-Jdk自带的"><a href="#Array类-Jdk自带的" class="headerlink" title="Array类(Jdk自带的)"></a>Array类(Jdk自带的)</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">常用的几个自带的方法:</span><br><span class="line"> - Array.toString()</span><br><span class="line"> - Array.<span class="built_in">sort</span>()		<span class="comment"># 排序,由小到大排</span></span><br><span class="line"> - Array.fill()		<span class="comment"># 填充</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="面向对象编程-OOP"><a href="#面向对象编程-OOP" class="headerlink" title="面向对象编程(OOP)"></a>面向对象编程(OOP)</h3><p>&#x3D;&#x3D;本质:以类的方式组织代码,以对象的组织(封装)数据&#x3D;&#x3D;</p>
+<h4 id="三大特性"><a href="#三大特性" class="headerlink" title="三大特性"></a>三大特性</h4><ul>
+<li>封装</li>
+<li><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112211444478.png" alt="image-20221112211444478"></li>
+<li>继承</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Super() 调用父类中的方法</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112215128317.png" alt="image-20221112215128317"></p>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112214853788.png" alt="image-20221112214853788"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">在java中,所有的类都直接或者间接继承<span class="string">&quot;Object类&quot;</span></span><br><span class="line">在java中只有单继承,但是可以间接继承多个</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>多态</li>
+<li><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221113100857495.png" alt="image-20221113100857495"></li>
+</ul>
+<p>instanceof  判断两个类之间是否存在父子关系</p>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221113101156680.png" alt="image-20221113101156680"></p>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221113101403121.png" alt="image-20221113101403121"></p>
+<h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>静态方法(有static)</li>
+</ul>
+<p>​		可以直接调用,不用new一个对象,直接就可以点出来</p>
+<ul>
+<li><p>非静态方法</p>
+<p>  ​	需要new 一个对象,然后才可以点出来,如图所示</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo01</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">        Student.say();</span><br><span class="line"></span><br><span class="line">        <span class="type">Teacher</span> <span class="variable">teacher</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Teacher</span>();</span><br><span class="line">        </span><br><span class="line">        teacher.say();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">==============================================================</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Teacher</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">say</span><span class="params">()</span>&#123;		</span><br><span class="line">        System.out.println(<span class="string">&quot;这不是一个静态方法,老师讲课===&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">===============================================================</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">say</span><span class="params">()</span>&#123;       <span class="comment">// 有static,是个静态方法</span></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;这是一个静态方法,学生说话了&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有static的静态方法,在类一开始时候就创建了,所以有	</p>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112210041907.png" alt="image-20221112210041907"></p>
+<h3 id="Super与This"><a href="#Super与This" class="headerlink" title="Super与This"></a>Super与This</h3><p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112215740128.png" alt="image-20221112215740128"></p>
+<h3 id="Static-静态"><a href="#Static-静态" class="headerlink" title="Static(静态)"></a>Static(静态)</h3><p>静态的,类加载的时候就启动了,也只会启动一次</p>
+<p>静态方法可以调用静态方法,如果变量用static修饰就成了类变量,可以直接类名点的方式调用,</p>
+<p>可以这样</p>
+<h3 id="final-无子类-不能被继承-断子绝孙"><a href="#final-无子类-不能被继承-断子绝孙" class="headerlink" title="final(无子类,不能被继承[断子绝孙])"></a>final(无子类,不能被继承[断子绝孙])</h3><h3 id="抽象类-abstract-只能通过extends实现单继承"><a href="#抽象类-abstract-只能通过extends实现单继承" class="headerlink" title="抽象类(abstract)只能通过extends实现单继承"></a>抽象类(abstract)只能通过extends实现单继承</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 抽象类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Demo05</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 只是个约束,有人帮我们实现了</span></span><br><span class="line">    <span class="comment">// abstract 抽象类,只有方法名字,没有方法的实现</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span>  <span class="title function_">say</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">jump</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;ikun is jumping&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 抽象类里面可以有普通方法</span></span><br><span class="line">    <span class="comment">// 抽象方法必须在抽象类里面</span></span><br><span class="line">    <span class="comment">// 抽象类不能去new,只能靠子类去实现它 约束!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="接口-interface-可以实现-x3D-x3D-伪多继承-x3D-x3D"><a href="#接口-interface-可以实现-x3D-x3D-伪多继承-x3D-x3D" class="headerlink" title="接口(interface):可以实现(&#x3D;&#x3D;伪多继承&#x3D;&#x3D;)"></a>接口(interface):可以实现(&#x3D;&#x3D;伪多继承&#x3D;&#x3D;)</h3><p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221113114041441.png" alt="image-20221113114041441"></p>
+<p>例子:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 关键字 interfance ,接口都需要有实现类,接口只能写方法,不能写方法体.这还是与abstract(抽象类)最根本的区别</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="variable">G</span> <span class="operator">=</span> <span class="number">99</span>;     <span class="comment">// 一般简写</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">A</span> <span class="operator">=</span> <span class="number">100</span>;        <span class="comment">// 全写</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">say</span><span class="params">()</span>;         <span class="comment">// public abstract void say();</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">TimeService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">jump</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">UserService</span>,TimeService&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">jump</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">say</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="堆和栈"><a href="#堆和栈" class="headerlink" title="堆和栈"></a>堆和栈</h3><p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112123918002.png" alt="	"><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221112211349000.png" alt="image-20221112211349000"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221113120702350.png" alt="image-20221113120702350"><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221113120758996.png" alt="image-20221113120758996"></p>
+<p><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221113124826321.png" alt="image-20221113124826321"><img src="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/image-20221113125328091.png" alt="image-20221113125328091"></p>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键:"></a>快捷键:</h3><p>Ctrl+alt+T</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>idea报错异常的原因跟处理方式(java跟springboot版本也记录)</title>
+    <url>/2022/11/12/idea%E6%8A%A5%E9%94%99%E5%BC%82%E5%B8%B8%E7%9A%84%E5%8E%9F%E5%9B%A0%E8%B7%9F%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h4 id="1-数组越界-ArrayIndexOutOfBoundsException-数字"><a href="#1-数组越界-ArrayIndexOutOfBoundsException-数字" class="headerlink" title="1. 数组越界(ArrayIndexOutOfBoundsException:数字)"></a>1. 数组越界(ArrayIndexOutOfBoundsException:数字)</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayDemo01</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] nums;</span><br><span class="line">        nums = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line"></span><br><span class="line">            nums[i] = i+<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            System.out.println(nums[i]);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 数组越界,下标最大只有nums[9]</span></span><br><span class="line">        System.out.println(nums[<span class="number">10</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>表示我们数组的第几个下标越界了</p>
+<p><img src="/2022/11/12/idea%E6%8A%A5%E9%94%99%E5%BC%82%E5%B8%B8%E7%9A%84%E5%8E%9F%E5%9B%A0%E8%B7%9F%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/image-20221112130818626.png" alt="image-20221112130818626"></p>
+<h4 id="2-类型转换异常-ClassCastException"><a href="#2-类型转换异常-ClassCastException" class="headerlink" title="2.类型转换异常 ClassCastException"></a>2.类型转换异常 ClassCastException</h4>]]></content>
+      <categories>
+        <category>报错</category>
       </categories>
   </entry>
 </search>
