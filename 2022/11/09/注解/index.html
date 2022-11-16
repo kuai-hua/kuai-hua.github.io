@@ -22,28 +22,45 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"kuai-hua.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="@Autowired：表示自动注入，自动从spring的上下文&#x3D;&#x3D;找到合适的bean来注入&#x3D;&#x3D;  @Resource：表示按指定名称注入，@Resource 可以通过 byName 和 byType的方式注入， 默认先按 byName的方式进行匹配，如果匹配不到，再按 byType的方式进行匹配。 当然，还可以为 @Service和@Resource 添加">
+    <meta name="description" content="springboot中常用注解跟意思 @Autowired：表示自动注入，自动从spring的上下文&#x3D;&#x3D;找到合适的bean来注入&#x3D;&#x3D;  @Resource：表示按指定名称注入，@Resource 可以通过 byName 和 byType的方式注入， 默认先按 byName的方式进行匹配，如果匹配不到，再按 byType的方式进行匹配。 当然，还可以为 @Se">
 <meta property="og:type" content="article">
-<meta property="og:title" content="注解">
+<meta property="og:title" content="常用的注解及其意义(Annotation)">
 <meta property="og:url" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Kuai-hua&#39;s Blog">
-<meta property="og:description" content="@Autowired：表示自动注入，自动从spring的上下文&#x3D;&#x3D;找到合适的bean来注入&#x3D;&#x3D;  @Resource：表示按指定名称注入，@Resource 可以通过 byName 和 byType的方式注入， 默认先按 byName的方式进行匹配，如果匹配不到，再按 byType的方式进行匹配。 当然，还可以为 @Service和@Resource 添加">
+<meta property="og:description" content="springboot中常用注解跟意思 @Autowired：表示自动注入，自动从spring的上下文&#x3D;&#x3D;找到合适的bean来注入&#x3D;&#x3D;  @Resource：表示按指定名称注入，@Resource 可以通过 byName 和 byType的方式注入， 默认先按 byName的方式进行匹配，如果匹配不到，再按 byType的方式进行匹配。 当然，还可以为 @Se">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114120557541.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114120711567.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114121229298.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114121349317.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114121834527.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114122301945.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114122705917.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114122852115.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114122932829.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114123305073.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114123604552.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114184725133.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221116212407684.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221116212539612.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221116212611136.png">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221116212623212.png">
 <meta property="article:published_time" content="2022-11-09T03:10:13.000Z">
-<meta property="article:modified_time" content="2022-11-09T03:58:41.235Z">
+<meta property="article:modified_time" content="2022-11-16T13:57:23.158Z">
 <meta property="article:author" content="Kuai-hua">
 <meta property="article:tag" content="SpringMVC,SpringBoot,Mybatis,Mysql,SpringCloud">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114120557541.png">
 
 
 <link rel="canonical" href="https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/","path":"2022/11/09/注解/","title":"注解"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://kuai-hua.github.io/2022/11/09/%E6%B3%A8%E8%A7%A3/","path":"2022/11/09/注解/","title":"常用的注解及其意义(Annotation)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>注解 | Kuai-hua's Blog</title>
+<title>常用的注解及其意义(Annotation) | Kuai-hua's Blog</title>
   
 
 
@@ -132,7 +149,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -145,6 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#springboot%E4%B8%AD%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E8%B7%9F%E6%84%8F%E6%80%9D"><span class="nav-number">1.</span> <span class="nav-text">springboot中常用注解跟意思</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E6%B3%A8%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">元注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%B7%B1%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">自己定义注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84"><span class="nav-number">4.</span> <span class="nav-text">反射</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">4.1.</span> <span class="nav-text">优点:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">4.2.</span> <span class="nav-text">缺点:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Class-forname-%E2%80%9C%E5%85%B7%E4%BD%93%E7%9A%84%E5%8C%85%E5%90%8D%E2%80%9D"><span class="nav-number">4.3.</span> <span class="nav-text">Class.forname(“具体的包名”)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">4.4.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#invoke-%E6%96%B9%E6%B3%95"><span class="nav-number">4.5.</span> <span class="nav-text">invoke()方法</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -159,7 +177,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -227,12 +245,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="注解 | Kuai-hua's Blog">
+      <meta itemprop="name" content="常用的注解及其意义(Annotation) | Kuai-hua's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          注解
+          常用的注解及其意义(Annotation)
         </h1>
 
         <div class="post-meta-container">
@@ -242,9 +260,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-11-09 11:10:13 / 修改时间：11:58:41" itemprop="dateCreated datePublished" datetime="2022-11-09T11:10:13+08:00">2022-11-09</time>
+      <time title="创建时间：2022-11-09 11:10:13" itemprop="dateCreated datePublished" datetime="2022-11-09T11:10:13+08:00">2022-11-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-11-16 21:57:23" itemprop="dateModified" datetime="2022-11-16T21:57:23+08:00">2022-11-16</time>
     </span>
 
   
@@ -255,19 +279,13 @@
       <span class="post-meta-item-text">阅读次数：</span>
       <span id="busuanzi_value_page_pv"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
+    <span id="/2022/11/09/%E6%B3%A8%E8%A7%A3/" class="post-meta-item leancloud_visitors" data-flag-title="常用的注解及其意义(Annotation)" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
     </span>
-    <span class="post-meta-item-text">Valine：</span>
-  
-    <a title="valine" href="/2022/11/09/%E6%B3%A8%E8%A7%A3/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/11/09/%E6%B3%A8%E8%A7%A3/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
   
 </div>
 
@@ -278,7 +296,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <ul>
+        <h3 id="springboot中常用注解跟意思"><a href="#springboot中常用注解跟意思" class="headerlink" title="springboot中常用注解跟意思"></a>springboot中常用注解跟意思</h3><ul>
 <li><p>@Autowired：表示自动注入，自动从spring的上下文&#x3D;&#x3D;找到合适的bean来注入&#x3D;&#x3D;</p>
 </li>
 <li><p>@Resource：表示按指定名称注入，@Resource 可以通过 byName 和 byType的方式注入， 默认先按 byName的方式进行匹配，如果匹配不到，再按 byType的方式进行匹配。 当然，还可以为 @Service和@Resource 添加 name 这个属性来区分不同的实现。</p>
@@ -286,17 +304,44 @@
 </li>
 <li><p>@Component：表示一种泛指，被标记类即组件，Spring扫描注解配置时，会标记这些类要&#x3D;&#x3D;生成对应的bean。&#x3D;&#x3D;</p>
 </li>
-<li><p>xxxxxxxxxx61 1    <dependencies>2​3        <!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter -->4        <dependency>5            <groupId>org.apache.dubbo</groupId>6            <artifactId>dubbo-spring-boot-starter</artifactId>7            <version>2.7.3</version>8        </dependency>9​10        <!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient -->11        <dependency>12            <groupId>com.github.sgroschupf</groupId>13            <artifactId>zkclient</artifactId>14            <version>0.1</version>15        </dependency>16​17​18        <!--排除日志-->19        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework -->20        <dependency>21            <groupId>org.apache.curator</groupId>22            <artifactId>curator-framework</artifactId>23            <version>2.12.0</version>24        </dependency>25​26​27        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->28        <dependency>29            <groupId>org.apache.curator</groupId>30            <artifactId>curator-recipes</artifactId>31            <version>2.12.0</version>32        </dependency>33​34        <!--排除日志，不然会日志冲突-->35        <!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper -->36        <dependency>37            <groupId>org.apache.zookeeper</groupId>38            <artifactId>zookeeper</artifactId>39            <version>3.4.14</version>40            <exclusions>41                <exclusion>42                    <groupId>org.slf4j</groupId>43                    <artifactId>slf4j-log4j12</artifactId>44                </exclusion>45            </exclusions>46        </dependency>47​48​49​50​51        <dependency>52            <groupId>org.springframework.boot</groupId>53            <artifactId>spring-boot-starter-web</artifactId>54        </dependency>55​56        <dependency>57            <groupId>org.springframework.boot</groupId>58            <artifactId>spring-boot-starter-test</artifactId>59            <scope>test</scope>60        </dependency>61    </dependencies>xml</p>
-</li>
 <li><p>Controller、Service、、Repository分别作用类是控制层类、业务层类、数据访问层类，Spring扫描注解配置时，会标记这些类要生成对应的bean。</p>
 </li>
-<li><p>@Autowired和@Resource是用来修饰字段，构造函数，或者方法，其作用是注入bean。而@Service，@Controller，@Repository，@Component则是用来修饰类，标记这些类要生成bean。</p>
-</li>
-<li><p>@Component  组件，为了被扫描到可以在实体类中加</p>
+<li><p>@Autowired和@Resource是用来修饰字段，构造函数，或者方法，其作用是注入bean。而@Service，@Controller，@Repository，</p>
 </li>
 </ul>
+<p>​	@Component则是用来修饰类，标记这些类要生成bean。</p>
+<ul>
+<li>@Component  组件，为了被扫描到可以在实体类中加</li>
+</ul>
 <p>@ConfigurationProperties(prefix &#x3D; “person”) 把application.yaml中的默认属性填装到Person类中的对应关键字</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span>  		service层</span><br><span class="line"><span class="meta">@Mapper</span><span class="meta">@Repository</span>		mapper/dao层</span><br><span class="line"><span class="meta">@Controller</span>			controller层</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span>  		<span class="comment">// service层</span></span><br><span class="line"><span class="meta">@Mapper</span><span class="meta">@Repository</span>		<span class="comment">// mapper/dao层</span></span><br><span class="line"><span class="meta">@Controller</span>			<span class="comment">// controller层</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114120557541.png" alt="image-20221114120557541"></p>
+<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114120711567.png" alt="image-20221114120711567"></p>
+<h3 id="自己定义注解"><a href="#自己定义注解" class="headerlink" title="自己定义注解"></a>自己定义注解</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自己定义注解和使用注解</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo01</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@MyAnnotation01(&quot;A&quot;)</span></span><br><span class="line">    <span class="meta">@MyAnnotation02</span></span><br><span class="line">    <span class="meta">@MyAnnotation03(name = &quot;B&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Test</span><span class="params">()</span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE,ElementType.METHOD&#125;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 表示这个注解在什么地方有效,级别runtime&gt;class&gt;sources,runtime说明程序运行都有效,一般选这个,</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@interface</span> MyAnnotation01&#123;</span><br><span class="line">    String <span class="title function_">value</span><span class="params">()</span>;     <span class="comment">// 这表示定义了一个叫做MyAnnotation01的注解,这个注解默认有一个值,这个值得手动去赋值</span></span><br><span class="line">                        <span class="comment">// 类似于@Mapper之类的注解,可以使用@MyAnnotation01来使用</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@interface</span> MyAnnotation02&#123;</span><br><span class="line">    String <span class="title function_">value</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;server.port&quot;</span>;       <span class="comment">// 可以不手动赋值,默认值为&quot;server.port&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Target(ElementType.METHOD)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@interface</span> MyAnnotation03&#123;</span><br><span class="line">    <span class="comment">// 注解参数: 参数类型 + 参数名字() + default + 默认值类型的值</span></span><br><span class="line">    <span class="comment">// 注解参数: 参数类型 + 参数名字()</span></span><br><span class="line">    String <span class="title function_">name</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">id</span><span class="params">()</span> <span class="keyword">default</span> -<span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">age</span><span class="params">()</span> <span class="keyword">default</span> <span class="number">4</span>;</span><br><span class="line">    String[] schools() <span class="keyword">default</span> &#123;<span class="string">&quot;name&quot;</span>,<span class="string">&quot;id&quot;</span>&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114121229298.png" alt="image-20221114121229298"></p>
+<p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114121349317.png" alt="image-20221114121349317"></p>
+<p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114121834527.png" alt="image-20221114121834527"></p>
+<h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h4><p>可以通过反射来获取Class的包名,类名,方法名等,动态创建对象执行操作执行方法</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点:"></a>缺点:</h4><p>降低程序的运行效率,可以关闭程序的安全监测访问操作私有变量,有安全隐患,</p>
+<h4 id="Class-forname-“具体的包名”"><a href="#Class-forname-“具体的包名”" class="headerlink" title="Class.forname(“具体的包名”)"></a>Class.forname(“具体的包名”)</h4><h4 id><a href="#" class="headerlink" title></a></h4><p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114122301945.png" alt="image-20221114122301945"></p>
+<p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114122705917.png" alt="image-20221114122705917"></p>
+<p>通过对比hashCode来判断是否是同一个类</p>
+<p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114122852115.png" alt="image-20221114122852115"><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114122932829.png" alt="image-20221114122932829"></p>
+<p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114123305073.png"></p>
+<p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114123604552.png" alt="image-20221114123604552"></p>
+<p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221114184725133.png" alt="image-20221114184725133"></p>
+<h4 id="invoke-方法"><a href="#invoke-方法" class="headerlink" title="invoke()方法"></a>invoke()方法</h4><p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221116212407684.png" alt="image-20221116212407684"></p>
+<p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221116212539612.png" alt="image-20221116212539612"></p>
+<p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221116212611136.png" alt="image-20221116212611136"></p>
+<p><img src="/2022/11/09/%E6%B3%A8%E8%A7%A3/image-20221116212623212.png" alt="image-20221116212623212"></p>
 
     </div>
 
@@ -372,7 +417,7 @@
 
 
 
-<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","appKey":"bJTS0ZfxmmgU96djhQc4whBd","serverURLs":"https://5fvlcxvo.lc-cn-n1-shared.com","placeholder":"期待你的评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":true,"enableQQ":true,"requiredFields":["nick","mail"],"el":"#valine-comments","path":"/2022/11/09/%E6%B3%A8%E8%A7%A3/"}</script>
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","appKey":"bJTS0ZfxmmgU96djhQc4whBd","serverURLs":"https://5fvlcxvo.lc-cn-n1-shared.com","placeholder":"期待你的评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":true,"comment_count":true,"recordIP":true,"enableQQ":true,"requiredFields":["nick","mail"],"el":"#valine-comments","path":"/2022/11/09/%E6%B3%A8%E8%A7%A3/"}</script>
 <script>
 document.addEventListener('page:loaded', () => {
   NexT.utils.loadComments(CONFIG.valine.el)
