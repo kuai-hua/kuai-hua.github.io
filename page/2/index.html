@@ -157,13 +157,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -202,6 +202,194 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://kuai-hua.github.io/2022/11/09/springMVC%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://desk-fd.zol-img.com.cn/t_s1024x768c5/g5/M00/01/0E/ChMkJ1bKweuIdLkyAANw0X0weRcAALGgABSD-sAA3Dp650.jpg">
+      <meta itemprop="name" content="Kuai-hua">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kuai-hua's Blog">
+      <meta itemprop="description" content="从现在开始">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Kuai-hua's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/09/springMVC%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">springMVC学习</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-11-09 11:06:21 / 修改时间：11:58:05" itemprop="dateCreated datePublished" datetime="2022-11-09T11:06:21+08:00">2022-11-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SpringMvc/" itemprop="url" rel="index"><span itemprop="name">SpringMvc</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/11/09/springMVC%E5%AD%A6%E4%B9%A0/" class="post-meta-item leancloud_visitors" data-flag-title="springMVC学习" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="1、SpringMvc的框架和配置模板"><a href="#1、SpringMvc的框架和配置模板" class="headerlink" title="1、SpringMvc的框架和配置模板"></a>1、SpringMvc的框架和配置模板</h1><h2 id="1-1、Mapper配置模板"><a href="#1-1、Mapper配置模板" class="headerlink" title="1.1、Mapper配置模板"></a>1.1、Mapper配置模板</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.kuaihua.dao.UserDao&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--这里的id是com.kuaihua.dao.UserDao类下的getUserList方法，resultType是返回值类型，必须写成实体类--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUserList&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.kuaihua.pojo.User&quot;</span>&gt;</span></span><br><span class="line">        select * from mybatis.user</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/11/09/springMVC%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://kuai-hua.github.io/2022/11/09/springCloud%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://desk-fd.zol-img.com.cn/t_s1024x768c5/g5/M00/01/0E/ChMkJ1bKweuIdLkyAANw0X0weRcAALGgABSD-sAA3Dp650.jpg">
+      <meta itemprop="name" content="Kuai-hua">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kuai-hua's Blog">
+      <meta itemprop="description" content="从现在开始">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Kuai-hua's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/09/springCloud%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">springCloud学习</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-11-09 11:03:08 / 修改时间：11:57:48" itemprop="dateCreated datePublished" datetime="2022-11-09T11:03:08+08:00">2022-11-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/springcloud/" itemprop="url" rel="index"><span itemprop="name">springcloud</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/11/09/springCloud%E5%AD%A6%E4%B9%A0/" class="post-meta-item leancloud_visitors" data-flag-title="springCloud学习" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="springcloud笔记"><a href="#springcloud笔记" class="headerlink" title="springcloud笔记"></a>springcloud笔记</h1><h2 id="1-Eureka-尤里卡"><a href="#1-Eureka-尤里卡" class="headerlink" title="1.Eureka(尤里卡)"></a>1.Eureka(尤里卡)</h2><h3 id="1-1-pom-xml-依赖"><a href="#1-1-pom-xml-依赖" class="headerlink" title="1.1 pom.xml(依赖)"></a>1.1 pom.xml(依赖)</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/11/09/springCloud%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -341,7 +529,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-12-08 19:51:28" itemprop="dateModified" datetime="2022-12-08T19:51:28+08:00">2022-12-08</time>
+      <time title="修改时间：2023-01-08 16:59:42" itemprop="dateModified" datetime="2023-01-08T16:59:42+08:00">2023-01-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -688,7 +876,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://kuai-hua.github.io/2022/11/09/springboot%E5%B8%B8%E8%A7%81%E4%BE%9D%E8%B5%96/">
+    <link itemprop="mainEntityOfPage" href="https://kuai-hua.github.io/2022/11/09/Springboot%E5%B8%B8%E8%A7%81%E4%BE%9D%E8%B5%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://desk-fd.zol-img.com.cn/t_s1024x768c5/g5/M00/01/0E/ChMkJ1bKweuIdLkyAANw0X0weRcAALGgABSD-sAA3Dp650.jpg">
@@ -706,7 +894,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/09/springboot%E5%B8%B8%E8%A7%81%E4%BE%9D%E8%B5%96/" class="post-title-link" itemprop="url">springboot常用的相关版本依赖</a>
+          <a href="/2022/11/09/Springboot%E5%B8%B8%E8%A7%81%E4%BE%9D%E8%B5%96/" class="post-title-link" itemprop="url">springboot常用的相关版本依赖</a>
         </h2>
 
         <div class="post-meta-container">
@@ -731,7 +919,7 @@
     </span>
 
   
-    <span id="/2022/11/09/springboot%E5%B8%B8%E8%A7%81%E4%BE%9D%E8%B5%96/" class="post-meta-item leancloud_visitors" data-flag-title="springboot常用的相关版本依赖" title="阅读次数">
+    <span id="/2022/11/09/Springboot%E5%B8%B8%E8%A7%81%E4%BE%9D%E8%B5%96/" class="post-meta-item leancloud_visitors" data-flag-title="springboot常用的相关版本依赖" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -751,7 +939,7 @@
           <h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--Druid数据源 --&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;druid&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;1.2.11&lt;/version&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line">  </span><br><span class="line">   &lt;!-- mysql数据库驱动 --&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">      &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/11/09/springboot%E5%B8%B8%E8%A7%81%E4%BE%9D%E8%B5%96/#more" rel="contents">
+              <a class="btn" href="/2022/11/09/Springboot%E5%B8%B8%E8%A7%81%E4%BE%9D%E8%B5%96/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -904,9 +1092,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-11-09 09:09:41 / 修改时间：09:39:34" itemprop="dateCreated datePublished" datetime="2022-11-09T09:09:41+08:00">2022-11-09</time>
+      <time title="创建时间：2022-11-09 09:09:41" itemprop="dateCreated datePublished" datetime="2022-11-09T09:09:41+08:00">2022-11-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-12-18 22:04:04" itemprop="dateModified" datetime="2022-12-18T22:04:04+08:00">2022-12-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -936,210 +1130,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Thymeleaf的使用规则"><a href="#Thymeleaf的使用规则" class="headerlink" title="Thymeleaf的使用规则"></a>Thymeleaf的使用规则</h1><ul>
+          <h1 id="Thymeleaf的使用规则"><a href="#Thymeleaf的使用规则" class="headerlink" title="Thymeleaf的使用规则"></a>Thymeleaf的使用规则</h1><h3 id="引入约束"><a href="#引入约束" class="headerlink" title="引入约束"></a>引入约束</h3><html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<p>&#x3D;&#x3D;‘xmlns:th&#x3D;”<a target="_blank" rel="noopener" href="http://www.thymeleaf.org’==/">http://www.thymeleaf.org’==</a></p>
+<ul>
 <li><p>在开头常见的需要引入相关的链接<code>xmlns:th=&quot;http://www.thymeleaf.org/thymeleaf-extras-shiro&quot;</code></p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">class</span>=<span class="string">&quot;no-js&quot;</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>  <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org/thymeleaf-extras-shiro&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    xmlns:th=&quot;http://www.thymeleaf.org&quot;</span><br><span class="line">xmlns:sec=&quot;http://www.thymeleaf.org/extras/spring-security&quot;</span><br><span class="line">xmlns:shiro=&quot;http://www.pollix.at/thymeleaf/shiro&quot;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span> </span></span><br><span class="line"><span class="tag">				<span class="attr">xmlns:sec</span>=<span class="string">&quot;http://www.thymeleaf.org/extras/spring-security&quot;</span></span></span><br><span class="line"><span class="tag">				<span class="attr">xmlns:shiro</span>=<span class="string">&quot;http://www.pollix.at/thymeleaf/shiro&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ul>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">class</span>=<span class="string">&quot;no-js&quot;</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>  <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org/thymeleaf-extras-shiro&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    xmlns:th=&quot;http://www.thymeleaf.org&quot;</span><br><span class="line">xmlns:sec=&quot;http://www.thymeleaf.org/extras/spring-security&quot;</span><br><span class="line">xmlns:shiro=&quot;http://www.pollix.at/thymeleaf/shiro&quot;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span> </span></span><br><span class="line"><span class="tag">				<span class="attr">xmlns:sec</span>=<span class="string">&quot;http://www.thymeleaf.org/extras/spring-security&quot;</span></span></span><br><span class="line"><span class="tag">				<span class="attr">xmlns:shiro</span>=<span class="string">&quot;http://www.pollix.at/thymeleaf/shiro&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ul></html>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/11/09/Theleaf/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://kuai-hua.github.io/2022/11/09/JSR303/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://desk-fd.zol-img.com.cn/t_s1024x768c5/g5/M00/01/0E/ChMkJ1bKweuIdLkyAANw0X0weRcAALGgABSD-sAA3Dp650.jpg">
-      <meta itemprop="name" content="Kuai-hua">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kuai-hua's Blog">
-      <meta itemprop="description" content="从现在开始">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Kuai-hua's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/09/JSR303/" class="post-title-link" itemprop="url">JSR303注解的简单使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-11-09 09:06:45 / 修改时间：09:38:16" itemprop="dateCreated datePublished" datetime="2022-11-09T09:06:45+08:00">2022-11-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/11/09/JSR303/" class="post-meta-item leancloud_visitors" data-flag-title="JSR303注解的简单使用" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="JSR303中含有的注解"><a href="#JSR303中含有的注解" class="headerlink" title="JSR303中含有的注解"></a>JSR303中含有的注解</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/11/09/JSR303/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://kuai-hua.github.io/2022/11/09/shiro/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://desk-fd.zol-img.com.cn/t_s1024x768c5/g5/M00/01/0E/ChMkJ1bKweuIdLkyAANw0X0weRcAALGgABSD-sAA3Dp650.jpg">
-      <meta itemprop="name" content="Kuai-hua">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kuai-hua's Blog">
-      <meta itemprop="description" content="从现在开始">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Kuai-hua's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/09/shiro/" class="post-title-link" itemprop="url">shiro授权认证与thyleaf的简单使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-11-09 09:04:40 / 修改时间：09:39:40" itemprop="dateCreated datePublished" datetime="2022-11-09T09:04:40+08:00">2022-11-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/11/09/shiro/" class="post-meta-item leancloud_visitors" data-flag-title="shiro授权认证与thyleaf的简单使用" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="1、shiro的学习和使用"><a href="#1、shiro的学习和使用" class="headerlink" title="1、shiro的学习和使用"></a>1、shiro的学习和使用</h1><h2 id="1-1、三大对象"><a href="#1-1、三大对象" class="headerlink" title="1.1、三大对象"></a>1.1、三大对象</h2><ul>
-<li><p>Subject</p>
-</li>
-<li><p>SecurityMassager</p>
-<blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Subject</span> <span class="variable">currentUser</span> <span class="operator">=</span> SecurityUtil.getSubject();	获得Subject</span><br><span class="line"><span class="type">Session</span> <span class="variable">session</span> <span class="operator">=</span> currentUser.getSession();	通过Subject 获取	 session</span><br><span class="line"><span class="keyword">if</span>（！currentUser.isAuthenticated()）;		判断用户是否被认证</span><br><span class="line">currentUser.getPrincipal();		回顾当前用户的认证</span><br><span class="line">currentUser.hasRole(<span class="string">&quot;schwartz&quot;</span>)		获得用户是否拥有schwartz这个角色</span><br><span class="line">currentUser.isPermitted(<span class="string">&quot;lighsaber.wield&quot;</span>);		获得用户后面的参数</span><br><span class="line">currentUser.logout();		注销</span><br></pre></td></tr></table></figure>
-
-</blockquote>
-<p>  xxxxxxxxxx61 1    <dependencies>2​3        <!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter -->4        <dependency>5            <groupId>org.apache.dubbo</groupId>6            <artifactId>dubbo-spring-boot-starter</artifactId>7            <version>2.7.3</version>8        </dependency>9​10        <!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient -->11        <dependency>12            <groupId>com.github.sgroschupf</groupId>13            <artifactId>zkclient</artifactId>14            <version>0.1</version>15        </dependency>16​17​18        <!--排除日志-->19        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework -->20        <dependency>21            <groupId>org.apache.curator</groupId>22            <artifactId>curator-framework</artifactId>23            <version>2.12.0</version>24        </dependency>25​26​27        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->28        <dependency>29            <groupId>org.apache.curator</groupId>30            <artifactId>curator-recipes</artifactId>31            <version>2.12.0</version>32        </dependency>33​34        <!--排除日志，不然会日志冲突-->35        <!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zookeeper -->36        <dependency>37            <groupId>org.apache.zookeeper</groupId>38            <artifactId>zookeeper</artifactId>39            <version>3.4.14</version>40            <exclusions>41                <exclusion>42                    <groupId>org.slf4j</groupId>43                    <artifactId>slf4j-log4j12</artifactId>44                </exclusion>45            </exclusions>46        </dependency>47​48​49​50​51        <dependency>52            <groupId>org.springframework.boot</groupId>53            <artifactId>spring-boot-starter-web</artifactId>54        </dependency>55​56        <dependency>57            <groupId>org.springframework.boot</groupId>58            <artifactId>spring-boot-starter-test</artifactId>59            <scope>test</scope>60        </dependency>61    </dependencies>xml</p>
-</li>
-<li><p>Realm</p></li></ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/11/09/shiro/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1175,7 +1174,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

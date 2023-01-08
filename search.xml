@@ -265,8 +265,12 @@
 <p>非关系型数据库:		类似键值对,k-v存储,存的是对象,可以扩展的对象</p>
 <hr>
 <p>数据库不区分大小写</p>
-<h1 id="数据库中相关操作"><a href="#数据库中相关操作" class="headerlink" title="数据库中相关操作"></a>数据库中相关操作</h1><p>&#x3D;&#x3D;操作数据库&gt;操作数据库中的表&gt;表中的数据&#x3D;&#x3D;</p>
+<h1 id="2-数据库中相关操作"><a href="#2-数据库中相关操作" class="headerlink" title="2. 数据库中相关操作"></a>2. 数据库中相关操作</h1><p>&#x3D;&#x3D;操作数据库&gt;操作数据库中的表&gt;表中的数据&#x3D;&#x3D;</p>
 <h2 id="操作数据库-show-Drop-Create-Use"><a href="#操作数据库-show-Drop-Create-Use" class="headerlink" title="操作数据库(show Drop Create Use)"></a>操作数据库(show Drop Create Use)</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">show</span> databases </span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> DATABASE (IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>) westos</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> DATABASE IF <span class="keyword">EXISTS</span> westos</span><br><span class="line"></span><br><span class="line">USE db03</span><br><span class="line"><span class="comment">-- `可以使用让数据库名字不高亮,同时两个&quot;-&quot;是注释符</span></span><br><span class="line">use `db02`</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> `student`(</span><br><span class="line">	`id` <span class="type">INT</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT	<span class="string">&#x27;学号&#x27;</span>,</span><br><span class="line">	`name` <span class="type">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;匿名&#x27;</span>  COMMENT <span class="string">&#x27;姓名&#x27;</span>,</span><br><span class="line">	`age` <span class="type">VARCHAR</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;18&#x27;</span> COMMENT <span class="string">&#x27;年龄&#x27;</span>,</span><br><span class="line">	`sex` <span class="type">VARCHAR</span>(<span class="number">2</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;女&#x27;</span> COMMENT <span class="string">&#x27;性别&#x27;</span>,</span><br><span class="line">	`brithday` DATETIME <span class="keyword">NOT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;出生日期&#x27;</span>,</span><br><span class="line">	<span class="keyword">PRIMARY</span> KEY(`id`)</span><br><span class="line">)ENGINE<span class="operator">=</span>INNODB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8</span><br></pre></td></tr></table></figure>
+
+
 
 <h2 id="操作数据库中的表"><a href="#操作数据库中的表" class="headerlink" title="操作数据库中的表"></a>操作数据库中的表</h2><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20221125210054507.png" alt="image-20221125210054507"><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20221125211524636.png" alt="image-20221125211524636"></p>
 <p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20221125211711271.png" alt="image-20221125211711271"></p>
@@ -281,7 +285,162 @@
 <p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20221125220037877.png" alt="image-20221125220037877"></p>
 <h2 id="操作表中数据"><a href="#操作表中数据" class="headerlink" title="操作表中数据"></a>操作表中数据</h2><h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20221203113416662.png" alt="image-20221203113416662"></p>
 <h4 id="去重distant"><a href="#去重distant" class="headerlink" title="去重distant"></a>去重distant</h4><p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20221203113652502.png" alt="image-20221203113652502"></p>
-]]></content>
+<h1 id="3-数据引擎MyIsam与InnoDb-常用"><a href="#3-数据引擎MyIsam与InnoDb-常用" class="headerlink" title="3. 数据引擎MyIsam与InnoDb(常用)"></a>3. 数据引擎MyIsam与InnoDb(常用)</h1><p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20221231211423088.png" alt="image-20221231211423088"></p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20221231211858525.png" alt="image-20221231211858525"></p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20221231211950795.png" alt="image-20221231211950795"></p>
+<h1 id="4-数据库级别外键"><a href="#4-数据库级别外键" class="headerlink" title="4. 数据库级别外键"></a>4. 数据库级别外键</h1><h2 id="方式一"><a href="#方式一" class="headerlink" title="方式一:"></a>方式一:</h2><p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230101154248939.png" alt="image-20230101154248939"></p>
+<h2 id="方式二-创建标成功后添加外键约束"><a href="#方式二-创建标成功后添加外键约束" class="headerlink" title="方式二:创建标成功后添加外键约束"></a>方式二:创建标成功后添加外键约束</h2><p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230101154530108.png" alt="image-20230101154530108"></p>
+<h1 id="5-DML语言"><a href="#5-DML语言" class="headerlink" title="5. DML语言:"></a>5. DML语言:</h1><h2 id="INSERT-插入"><a href="#INSERT-插入" class="headerlink" title="INSERT(插入)"></a>INSERT(插入)</h2><p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230101155247672.png" alt="image-20230101155247672"></p>
+<h2 id="UPDATE-更改"><a href="#UPDATE-更改" class="headerlink" title="UPDATE(更改)"></a>UPDATE(更改)</h2><p>语法:</p>
+<p>​	Update 表 set 修改因素 where 修改条件</p>
+<p>如果不指定条件的话,就会执行全部,然后就得跑路了</p>
+<h2 id="Delete-删除"><a href="#Delete-删除" class="headerlink" title="Delete(删除)"></a>Delete(删除)</h2><p>语法:</p>
+<p>delete from 表 where 删除条件</p>
+<p>不加删除条件会把所有的数据都删掉</p>
+<h2 id="Truncate-清空"><a href="#Truncate-清空" class="headerlink" title="Truncate(清空)"></a>Truncate(清空)</h2><p>语法:</p>
+<p>Truncate <code>表明</code></p>
+<h3 id="Delete与Truncate的区别"><a href="#Delete与Truncate的区别" class="headerlink" title="Delete与Truncate的区别:"></a>Delete与Truncate的区别:</h3><ul>
+<li>相同点:都能删除数据,都不会影响表的结构</li>
+<li>不同点:<ul>
+<li>Truncate重新设置,自增数列清零</li>
+<li>Truncate不影响事务</li>
+</ul>
+</li>
+</ul>
+<h2 id="SELECT-查询"><a href="#SELECT-查询" class="headerlink" title="SELECT(查询)"></a>SELECT(查询)</h2><p>语法:</p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230105110318389.png" alt="image-20230105110318389"></p>
+<p>select <code>字段</code>1 ,<code>字段2</code> from <code>表</code></p>
+<p>select <code>字段</code> as<code>别名</code> from <code>表</code></p>
+<p>函数:concat(a,b)  拼接字符串</p>
+<p>select concat(‘姓名:’,字段) as 别名 from <code>表</code>	</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">有的字段不是那么的见名知意基于可以起别名</span><br></pre></td></tr></table></figure>
+
+<h2 id="Distinct-去重"><a href="#Distinct-去重" class="headerlink" title="Distinct(去重)"></a>Distinct(去重)</h2><p>取出select语句中重复的数据</p>
+<p>语法:</p>
+<p>select distinct <code>字段</code> from 表</p>
+<h2 id="其它不常用功能"><a href="#其它不常用功能" class="headerlink" title="其它不常用功能"></a>其它不常用功能</h2><p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230103111059879.png" alt="image-20230103111059879"></p>
+<p>select <code>表达式</code> from <code>表</code></p>
+<h2 id="where条件字句与模糊查询-逻辑运算符"><a href="#where条件字句与模糊查询-逻辑运算符" class="headerlink" title="where条件字句与模糊查询(逻辑运算符)"></a>where条件字句与模糊查询(逻辑运算符)</h2><p>&#x3D;&#x3D;逻辑运算符&#x3D;&#x3D;</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>语法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>and &amp;&amp;</td>
+<td>a&amp;&amp;b</td>
+<td>&#x3D;&#x3D;逻辑与,两个为真才是真&#x3D;&#x3D;</td>
+</tr>
+<tr>
+<td>or ||</td>
+<td>a||b</td>
+<td>&#x3D;&#x3D;逻辑或,一个是真就是真&#x3D;&#x3D;</td>
+</tr>
+<tr>
+<td>not !</td>
+<td>!a</td>
+<td>&#x3D;&#x3D;逻辑非,真为假,假为真&#x3D;&#x3D;</td>
+</tr>
+</tbody></table>
+<p>&#x3D;&#x3D;尽量使用英文字母,而不是符号&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;比较运算符&#x3D;&#x3D;</p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230103120530899.png" alt="image-20230103120530899"></p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230103120644235.png" alt="image-20230103120644235"><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230103120936755.png" alt="image-20230103120936755"></p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>语法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IS NULL</td>
+<td>a is null</td>
+<td>如果操作符为null,则是真</td>
+</tr>
+<tr>
+<td>IS NOT NULL</td>
+<td>a is not null</td>
+<td>如果操作符不是null,则是真</td>
+</tr>
+<tr>
+<td>between</td>
+<td>a between b and c</td>
+<td>如果a在b和c之间,则是真</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;in&#x3D;&#x3D;</td>
+<td>a in(‘a’,’b’,’c’…)</td>
+<td>若果a在a,b,c其中的一个或者多个值中,则是真</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;like&#x3D;&#x3D;</td>
+<td>a like b</td>
+<td>Sql匹配,如果a匹配b,则是真</td>
+</tr>
+</tbody></table>
+<p>比较重要的就是&#x3D;&#x3D;in&#x3D;&#x3D;和&#x3D;&#x3D;like&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;%&#x3D;&#x3D;表示0到任意字符</p>
+<p>&#x3D;&#x3D;_&#x3D;&#x3D;表示一个字符</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">其中比较重要的就是模糊查询,<span class="keyword">like</span>与<span class="string">&#x27;%&#x27;</span>和<span class="string">&#x27;_&#x27;</span>搭配</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line">	<span class="comment">-- 从student表中查找studentName姓刘的同学</span></span><br><span class="line">	<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student <span class="keyword">where</span> studentName <span class="keyword">like</span> <span class="string">&#x27;刘%&#x27;</span> </span><br><span class="line">	</span><br><span class="line">	<span class="comment">-- 从student表中查找studentName姓刘的,并且名字只有两个字的同学</span></span><br><span class="line">	<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student <span class="keyword">where</span> studentName <span class="keyword">like</span> <span class="string">&#x27;刘_&#x27;</span> </span><br><span class="line">	</span><br><span class="line">	<span class="comment">-- 从student表中查找studentName中名字带&#x27;瑞&#x27;字的同学</span></span><br><span class="line">	<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student <span class="keyword">where</span> studentName <span class="keyword">like</span> <span class="string">&#x27;%瑞%&#x27;</span> </span><br><span class="line">	</span><br><span class="line">	<span class="comment">-- 从student表中查找studentName中名字带&#x27;瑞&#x27;字的并且必须是三个字的同学</span></span><br><span class="line">	<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student <span class="keyword">where</span> studentName <span class="keyword">like</span> <span class="string">&#x27;_瑞_&#x27;</span> </span><br></pre></td></tr></table></figure>
+
+<h2 id="连表查询-注意需要反复用到表去别名的方式"><a href="#连表查询-注意需要反复用到表去别名的方式" class="headerlink" title="连表查询(注意需要反复用到表去别名的方式)"></a>连表查询(注意需要反复用到表去别名的方式)</h2><p>&#x3D;&#x3D;关键点&#x3D;&#x3D;:两个表之间一定是要有交叉点的,没有交叉点是没有办法进行查询的</p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230103202711088.png" alt="image-20230103202711088"></p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230103202808391.png" alt="image-20230103202808391"></p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230103203007491.png" alt="image-20230103203007491"></p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230103212326766.png" alt="image-20230103212326766"></p>
+<h2 id="自连接-一张表当做两张表来用-这必须器别名"><a href="#自连接-一张表当做两张表来用-这必须器别名" class="headerlink" title="自连接(一张表当做两张表来用),这必须器别名"></a>自连接(一张表当做两张表来用),这必须器别名</h2><p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230103215715116.png" alt="image-20230103215715116"></p>
+<h2 id="分页-limit-和排序-Order-by"><a href="#分页-limit-和排序-Order-by" class="headerlink" title="分页(limit)和排序(Order by)"></a>分页(limit)和排序(Order by)</h2><p>分页原因:</p>
+<p>​	缓解数据库压力,给人更好的体验,没有分页的是瀑布流.</p>
+<p>​	语法: limit 起始值,页面大小  </p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- limit 0,5  实际是从0+1开始,1,2,3,4,5 所以是1~5</span></span><br><span class="line"><span class="comment">-- limit 1,6  实际从1+1开始,2,3,4,5,6,7 所以说是2~7</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230105111020457.png" alt="image-20230105111020457">		<img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230105111235590.png" alt="image-20230105111235590"></p>
+<p> 升序(asc):</p>
+<p> 降序(desc):</p>
+<h2 id="分组和过滤"><a href="#分组和过滤" class="headerlink" title="分组和过滤"></a>分组和过滤</h2><p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230105124038815.png" alt="image-20230105124038815"></p>
+<h2 id="子查询-由里及外"><a href="#子查询-由里及外" class="headerlink" title="子查询(由里及外)"></a>子查询(由里及外)</h2><p>​	<img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230105113442200.png" alt="image-20230105113442200"></p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230105113414282.png" alt="image-20230105113414282"></p>
+<p>&#x3D;&#x3D;总结&#x3D;&#x3D;:</p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230105155446165.png" alt="image-20230105155446165"></p>
+<h1 id="6-Mysql函数"><a href="#6-Mysql函数" class="headerlink" title="6. Mysql函数"></a>6. Mysql函数</h1><p>常用函数地址<a href="http://c.biancheng.net/mysql/function/">http://c.biancheng.net/mysql/function/</a></p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/.png" alt="./Mysql相关笔记/"></p>
+<h3 id="关于时间的"><a href="#关于时间的" class="headerlink" title="关于时间的"></a>关于时间的</h3><p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230105122208751.png" alt="image-20230105122208751"></p>
+<p>聚合函数(常用)</p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230105122735760.png" alt="image-20230105122735760"></p>
+<h1 id="7-MD5加密"><a href="#7-MD5加密" class="headerlink" title="7. MD5加密"></a>7. MD5加密</h1><p>什么是MD5:</p>
+<p><strong>MD5信息摘要算法</strong>（英语：MD5 Message-Digest Algorithm），一种被广泛使用的<a href="https://baike.baidu.com/item/%E5%AF%86%E7%A0%81%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B0/14937715?fromModule=lemma_inlink">密码散列函数</a>，可以产生出一个128位（16<a href="https://baike.baidu.com/item/%E5%AD%97%E8%8A%82/1096318?fromModule=lemma_inlink">字节</a>）的散列值（hash value），用于确保信息传输完整一致.</p>
+<p>主要是增加算法的复杂性和不可逆性</p>
+<p>MD5不可逆,但是具体的值的MD5是一致的</p>
+<p>MD5破解原理是有一个MD5字典,字典存放的是MD5加密后的在值,然后进行加密后的值的比对.</p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230105154916227.png" alt="image-20230105154916227"></p>
+<h1 id="8-事务"><a href="#8-事务" class="headerlink" title="8. 事务:"></a>8. 事务:</h1><p>&#x3D;&#x3D;要么都成功,要么都失败&#x3D;&#x3D;</p>
+<h2 id="8-1四大原则-ACID"><a href="#8-1四大原则-ACID" class="headerlink" title="8.1四大原则(ACID)"></a>8.1四大原则(ACID)</h2><p><strong>ACID</strong>，是指<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F?fromModule=lemma_inlink">数据库管理系统</a>（<a href="https://baike.baidu.com/item/DBMS?fromModule=lemma_inlink">DBMS</a>）在写入或更新资料的过程中，为保证<a href="https://baike.baidu.com/item/%E4%BA%8B%E5%8A%A1?fromModule=lemma_inlink">事务</a>（transaction）是正确可靠的，所必须具备的四个特性：<a href="https://baike.baidu.com/item/%E5%8E%9F%E5%AD%90%E6%80%A7?fromModule=lemma_inlink">原子性</a>（atomicity，或称不可分割性）、<a href="https://baike.baidu.com/item/%E4%B8%80%E8%87%B4%E6%80%A7?fromModule=lemma_inlink">一致性</a>（consistency）、<a href="https://baike.baidu.com/item/%E9%9A%94%E7%A6%BB%E6%80%A7?fromModule=lemma_inlink">隔离性</a>（isolation，又称独立性）、<a href="https://baike.baidu.com/item/%E6%8C%81%E4%B9%85%E6%80%A7?fromModule=lemma_inlink">持久性</a>（durability）。</p>
+<p><strong>原子性</strong></p>
+<p>要么成功要么失败</p>
+<p><strong>一致性</strong></p>
+<p>无论如何操作数据的最终结果都要保持一致性,即最终一致性</p>
+<p><strong>持久性</strong></p>
+<p>事务一旦提交就会持久化到数据库中,不可以逆转,但是没提交就会回到断电前的状态,数据不会发生改变</p>
+<p><strong>隔离性</strong></p>
+<p>为了防止多个用户**并发	**访问数据库,为了防止数据受到干扰,数据库回味每一个用户开启事务,防止数据丢失.</p>
+<p>数据隔离发生的一些问题</p>
+<p><strong>脏读</strong></p>
+<p>一个事务读取了另一个事务未提交的数据</p>
+<p><strong>虚读</strong></p>
+<p>一个事务读取到另一个事务插入的数据,导致前后数据不一致</p>
+<p><strong>不可重复读</strong></p>
+<p>一个事务读取某一行数据的时候,多次读取数据不同,也不一定是数据错误,也可能是某些场合不同</p>
+<p>&#x3D;&#x3D;mysql的事务默认是开启的,但是也可以手动关闭&#x3D;&#x3D;</p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230105161307067.png" alt="image-20230105161307067"></p>
+<h1 id="9-索引"><a href="#9-索引" class="headerlink" title="9. 索引"></a>9. 索引</h1><p>在<a href="https://baike.baidu.com/item/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/1237340?fromModule=lemma_inlink">关系数据库</a>中，索引是一种单独的、物理的对数据库表中一列或多列的值进行排序的一种<a href="https://baike.baidu.com/item/%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/350782?fromModule=lemma_inlink">存储结构</a>，它是某个表中一列或若干列值的集合和相应的指向表中物理标识这些值的数据页的逻辑<a href="https://baike.baidu.com/item/%E6%8C%87%E9%92%88/2878304?fromModule=lemma_inlink">指针</a>清单。索引的作用相当于图书的<a href="https://baike.baidu.com/item/%E7%9B%AE%E5%BD%95/96183?fromModule=lemma_inlink">目录</a>，可以根据目录中的<a href="https://baike.baidu.com/item/%E9%A1%B5%E7%A0%81/7716178?fromModule=lemma_inlink">页码</a>快速找到所需的内容。</p>
+<p>&#x3D;&#x3D;索引是可以帮助mysql高效获取数据的数据结构&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;索引是数据结构&#x3D;&#x3D;</p>
+<h2 id="9-1-索引分类"><a href="#9-1-索引分类" class="headerlink" title="9.1 索引分类"></a>9.1 索引分类</h2>]]></content>
       <categories>
         <category>Mysql</category>
       </categories>
@@ -568,7 +727,10 @@
   <entry>
     <title>Theleaf与springboot整合,在html中的使用</title>
     <url>/2022/11/09/Theleaf/</url>
-    <content><![CDATA[<h1 id="Thymeleaf的使用规则"><a href="#Thymeleaf的使用规则" class="headerlink" title="Thymeleaf的使用规则"></a>Thymeleaf的使用规则</h1><ul>
+    <content><![CDATA[<h1 id="Thymeleaf的使用规则"><a href="#Thymeleaf的使用规则" class="headerlink" title="Thymeleaf的使用规则"></a>Thymeleaf的使用规则</h1><h3 id="引入约束"><a href="#引入约束" class="headerlink" title="引入约束"></a>引入约束</h3><html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<p>&#x3D;&#x3D;‘xmlns:th&#x3D;”<a href="http://www.thymeleaf.org’==/">http://www.thymeleaf.org’==</a></p>
+<ul>
 <li><p>在开头常见的需要引入相关的链接<code>xmlns:th=&quot;http://www.thymeleaf.org/thymeleaf-extras-shiro&quot;</code></p>
   <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">class</span>=<span class="string">&quot;no-js&quot;</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>  <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org/thymeleaf-extras-shiro&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    xmlns:th=&quot;http://www.thymeleaf.org&quot;</span><br><span class="line">xmlns:sec=&quot;http://www.thymeleaf.org/extras/spring-security&quot;</span><br><span class="line">xmlns:shiro=&quot;http://www.pollix.at/thymeleaf/shiro&quot;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span> </span></span><br><span class="line"><span class="tag">				<span class="attr">xmlns:sec</span>=<span class="string">&quot;http://www.thymeleaf.org/extras/spring-security&quot;</span></span></span><br><span class="line"><span class="tag">				<span class="attr">xmlns:shiro</span>=<span class="string">&quot;http://www.pollix.at/thymeleaf/shiro&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -628,7 +790,8 @@
 <p><img src="/2022/11/09/Theleaf/Users\kuaihua\AppData\Roaming\Typora\typora-user-images\image-20221013115857358.png" alt="image-20221013115857358"></p>
 <p><img src="/2022/11/09/Theleaf/image-20221013115939759.png" alt="image-20221013115939759"></p>
 <p>这就是结果</p>
-]]></content>
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><p>所有的html中的元素都可以在theleaf中被替换，使用方式：&#x3D;&#x3D;th：元素名&#x3D;&#x3D;</p>
+</html>]]></content>
       <categories>
         <category>springboot</category>
       </categories>
@@ -1477,22 +1640,6 @@
       </categories>
   </entry>
   <entry>
-    <title>springboot常用的相关版本依赖</title>
-    <url>/2022/11/09/springboot%E5%B8%B8%E8%A7%81%E4%BE%9D%E8%B5%96/</url>
-    <content><![CDATA[<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!--Druid数据源 --&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;druid&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;1.2.11&lt;/version&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line">  </span><br><span class="line">   &lt;!-- mysql数据库驱动 --&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">      &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h2 id="zookeeper-dubbo"><a href="#zookeeper-dubbo" class="headerlink" title="zookeeper+dubbo"></a>zookeeper+dubbo</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!-- dubbo --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;dubbo-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;2.7.3&lt;/version&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!-- zookeeper客户端 --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;com.github.sgroschupf&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;zkclient&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;0.1&lt;/version&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      &lt;!--排除日志--&gt;</span><br><span class="line">      &lt;!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;curator-framework&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;2.12.0&lt;/version&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      &lt;!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;2.12.0&lt;/version&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!--排除日志，不然会日志冲突,版本冲突,不排除会报错--&gt;</span><br><span class="line">      &lt;!-- zookeeper --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;3.4.14&lt;/version&gt;</span><br><span class="line">          &lt;exclusions&gt;</span><br><span class="line">              &lt;exclusion&gt;</span><br><span class="line">                  &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">                  &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;</span><br><span class="line">              &lt;/exclusion&gt;</span><br><span class="line">          &lt;/exclusions&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">&lt;!-- springboot启动器 --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">          &lt;scope&gt;<span class="built_in">test</span>&lt;/scope&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!-- springboot整合mybatis --&gt;</span><br><span class="line">     &lt;dependency&gt;</span><br><span class="line">         &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">         &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">         &lt;version&gt;2.2.2&lt;/version&gt;</span><br><span class="line">     &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">&lt;!-- Shiro授权认证 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.shiro<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro-spring<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.9.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- Security安全,登录拦截 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- springboot与theleaf整合 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- springboot与web --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">&lt;!-- Thymeleaf与security整合 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.thymeleaf.extras<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>thymeleaf-extras-springsecurity5<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">&lt;!-- lombok实体 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- springboot --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.xmlunit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xmlunit-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.8.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.github.theborakompanioni/thymeleaf-extras-shiro --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.theborakompanioni<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>thymeleaf-extras-shiro<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>springboot</category>
-      </categories>
-  </entry>
-  <entry>
     <title>springcloud整合邮件异步</title>
     <url>/2022/11/09/springcloud%E6%95%B4%E5%90%88%E9%82%AE%E4%BB%B6%E5%BC%82%E6%AD%A5/</url>
     <content><![CDATA[<h2 id="springboot整合邮件发送-异步任务与定时发送"><a href="#springboot整合邮件发送-异步任务与定时发送" class="headerlink" title="springboot整合邮件发送,异步任务与定时发送"></a>springboot整合邮件发送,异步任务与定时发送</h2><h3 id="1-1-邮件发送"><a href="#1-1-邮件发送" class="headerlink" title="1.1 邮件发送"></a>1.1 邮件发送</h3><h4 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-mail<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -1739,5 +1886,42 @@
       <categories>
         <category>hexo</category>
       </categories>
+  </entry>
+  <entry>
+    <title>springboot常用的相关版本依赖</title>
+    <url>/2022/11/09/Springboot%E5%B8%B8%E8%A7%81%E4%BE%9D%E8%B5%96/</url>
+    <content><![CDATA[<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!--Druid数据源 --&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;druid&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;1.2.11&lt;/version&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line">  </span><br><span class="line">   &lt;!-- mysql数据库驱动 --&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">      &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="zookeeper-dubbo"><a href="#zookeeper-dubbo" class="headerlink" title="zookeeper+dubbo"></a>zookeeper+dubbo</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!-- dubbo --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;dubbo-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;2.7.3&lt;/version&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!-- zookeeper客户端 --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;com.github.sgroschupf&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;zkclient&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;0.1&lt;/version&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      &lt;!--排除日志--&gt;</span><br><span class="line">      &lt;!-- https://mvnrepository.com/artifact/org.apache.curator/curator-framework --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;curator-framework&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;2.12.0&lt;/version&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      &lt;!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;2.12.0&lt;/version&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!--排除日志，不然会日志冲突,版本冲突,不排除会报错--&gt;</span><br><span class="line">      &lt;!-- zookeeper --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;3.4.14&lt;/version&gt;</span><br><span class="line">          &lt;exclusions&gt;</span><br><span class="line">              &lt;exclusion&gt;</span><br><span class="line">                  &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">                  &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;</span><br><span class="line">              &lt;/exclusion&gt;</span><br><span class="line">          &lt;/exclusions&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">&lt;!-- springboot启动器 --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">          &lt;scope&gt;<span class="built_in">test</span>&lt;/scope&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!-- springboot整合mybatis --&gt;</span><br><span class="line">     &lt;dependency&gt;</span><br><span class="line">         &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">         &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">         &lt;version&gt;2.2.2&lt;/version&gt;</span><br><span class="line">     &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">&lt;!-- Shiro授权认证 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.shiro<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro-spring<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.9.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- Security安全,登录拦截 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- springboot与theleaf整合 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- springboot与web --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">&lt;!-- Thymeleaf与security整合 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.thymeleaf.extras<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>thymeleaf-extras-springsecurity5<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="comment">&lt;!-- lombok实体 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- springboot --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.xmlunit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xmlunit-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.8.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.github.theborakompanioni/thymeleaf-extras-shiro --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.theborakompanioni<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>thymeleaf-extras-shiro<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>springboot</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>SpringBoot学习</title>
+    <url>/2022/12/13/SpringBoot%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p><img src="/2022/12/13/SpringBoot%E5%AD%A6%E4%B9%A0/Hexo\hexoblog\source_posts\SpringBoot学习\image-20221217230443297.png" alt="image-20221217230443297"></p>
+<p>所有的静态资源都默认从resources文件夹下面的static,resources,public文件下面寻找,其中的&#x3D;&#x3D;优先级&#x3D;&#x3D;不同</p>
+<p>&#x3D;&#x3D;优先级&#x3D;&#x3D;resources&gt;public&gt;static</p>
+<p><img src="/2022/12/13/SpringBoot%E5%AD%A6%E4%B9%A0/Hexo\hexoblog\source_posts\SpringBoot学习\image-20221217231300192.png" alt="image-20221217231300192"></p>
+<p>在听templates目录下面的html只能通过controller类中的方法跳转.同时还得搭配Thymeleaf。</p>
+<h2 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h2><p>这是&#x3D;&#x3D;模板引擎的原理图&#x3D;&#x3D;</p>
+<p><img src="/2022/12/13/SpringBoot%E5%AD%A6%E4%B9%A0/Hexo\hexoblog\source_posts\SpringBoot学习\image-20221217232117205.png" alt="image-20221217232117205"></p>
+<p>templates下面的文件夹需要引入模板引擎才可以通过controller访问。</p>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/01/08/Untitled/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

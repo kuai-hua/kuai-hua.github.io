@@ -22,19 +22,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"kuai-hua.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Thymeleaf的使用规则 在开头常见的需要引入相关的链接xmlns:th&#x3D;&quot;http:&#x2F;&#x2F;www.thymeleaf.org&#x2F;thymeleaf-extras-shiro&quot;   12345678910&lt;html class&#x3D;&quot;no-js&quot; lang&#x3D;&quot;en&quot;  xmlns:th&#x3D;&quot;http:&#x2F;&#x2F;www.thymelea">
+    <meta name="description" content="Thymeleaf的使用规则引入约束  &#x3D;&#x3D;‘xmlns:th&#x3D;”http:&#x2F;&#x2F;www.thymeleaf.org’&#x3D;&#x3D;  在开头常见的需要引入相关的链接xmlns:th&#x3D;&quot;http:&#x2F;&#x2F;www.thymeleaf.org&#x2F;thymeleaf-extras-shiro&quot;   12345678910&lt;html class&#x3D;&quot;no-js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Theleaf与springboot整合,在html中的使用">
 <meta property="og:url" content="https://kuai-hua.github.io/2022/11/09/Theleaf/index.html">
 <meta property="og:site_name" content="Kuai-hua&#39;s Blog">
-<meta property="og:description" content="Thymeleaf的使用规则 在开头常见的需要引入相关的链接xmlns:th&#x3D;&quot;http:&#x2F;&#x2F;www.thymeleaf.org&#x2F;thymeleaf-extras-shiro&quot;   12345678910&lt;html class&#x3D;&quot;no-js&quot; lang&#x3D;&quot;en&quot;  xmlns:th&#x3D;&quot;http:&#x2F;&#x2F;www.thymelea">
+<meta property="og:description" content="Thymeleaf的使用规则引入约束  &#x3D;&#x3D;‘xmlns:th&#x3D;”http:&#x2F;&#x2F;www.thymeleaf.org’&#x3D;&#x3D;  在开头常见的需要引入相关的链接xmlns:th&#x3D;&quot;http:&#x2F;&#x2F;www.thymeleaf.org&#x2F;thymeleaf-extras-shiro&quot;   12345678910&lt;html class&#x3D;&quot;no-js">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/Theleaf/image-20221011094359496.png">
 <meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/Theleaf/image-20221011094908321.png">
 <meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/Theleaf/Users/kuaihua/AppData/Roaming/Typora/typora-user-images/image-20221013115857358.png">
 <meta property="og:image" content="https://kuai-hua.github.io/2022/11/09/Theleaf/image-20221013115939759.png">
 <meta property="article:published_time" content="2022-11-09T01:09:41.000Z">
-<meta property="article:modified_time" content="2022-11-09T01:39:34.793Z">
+<meta property="article:modified_time" content="2022-12-18T14:04:04.691Z">
 <meta property="article:author" content="Kuai-hua">
 <meta property="article:tag" content="SpringMVC,SpringBoot,Mybatis,Mysql,SpringCloud">
 <meta name="twitter:card" content="summary">
@@ -150,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Thymeleaf%E7%9A%84%E4%BD%BF%E7%94%A8%E8%A7%84%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text">Thymeleaf的使用规则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96"><span class="nav-number">1.1.</span> <span class="nav-text">依赖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Theleaf%E6%95%B4%E5%90%88"><span class="nav-number">2.</span> <span class="nav-text">Theleaf整合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E6%8F%90%E5%8F%96%E5%92%8C%E4%BD%BF%E7%94%A8%E6%96%87%E4%BB%B6%E5%85%AC%E5%85%B1%E9%83%A8%E5%88%86"><span class="nav-number">2.1.</span> <span class="nav-text">1.1提取和使用文件公共部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-theleaf%E5%AF%B9%E5%88%97%E8%A1%A8%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%E5%BE%AA%E7%8E%AF%E5%AF%BC%E5%87%BA"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 theleaf对列表内容进行循环导出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%88%A9%E7%94%A8theleaf%E5%AE%8C%E6%88%90%E7%82%B9%E8%B0%81%E8%B0%81%E9%AB%98%E4%BA%AE"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 利用theleaf完成点谁谁高亮</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Theleaf%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">Theleaf时间格式转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2-dates-format"><span class="nav-number">3.1.</span> <span class="nav-text">1. 时间格式转换,#dates.format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-theleaf%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%B9%B6%E4%B8%94%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9readonly"><span class="nav-number">3.2.</span> <span class="nav-text">2. theleaf中使用三目运算符,并且不能修改readonly</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4-dates-createNow"><span class="nav-number">3.3.</span> <span class="nav-text">3. 获取当前时间#dates.createNow()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%80%89%E6%8B%A9%E9%A1%B9-%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%B9%E5%BA%94%E7%9A%84%E6%98%AF%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%841"><span class="nav-number">3.4.</span> <span class="nav-text">4. 选择项,管理员对应的是数据库中的1</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Thymeleaf%E7%9A%84%E4%BD%BF%E7%94%A8%E8%A7%84%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text">Thymeleaf的使用规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E7%BA%A6%E6%9D%9F"><span class="nav-number">1.0.1.</span> <span class="nav-text">引入约束</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96"><span class="nav-number">1.1.</span> <span class="nav-text">依赖</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Theleaf%E6%95%B4%E5%90%88"><span class="nav-number">2.</span> <span class="nav-text">Theleaf整合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E6%8F%90%E5%8F%96%E5%92%8C%E4%BD%BF%E7%94%A8%E6%96%87%E4%BB%B6%E5%85%AC%E5%85%B1%E9%83%A8%E5%88%86"><span class="nav-number">2.1.</span> <span class="nav-text">1.1提取和使用文件公共部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-theleaf%E5%AF%B9%E5%88%97%E8%A1%A8%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%E5%BE%AA%E7%8E%AF%E5%AF%BC%E5%87%BA"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 theleaf对列表内容进行循环导出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%88%A9%E7%94%A8theleaf%E5%AE%8C%E6%88%90%E7%82%B9%E8%B0%81%E8%B0%81%E9%AB%98%E4%BA%AE"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 利用theleaf完成点谁谁高亮</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Theleaf%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">Theleaf时间格式转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2-dates-format"><span class="nav-number">3.1.</span> <span class="nav-text">1. 时间格式转换,#dates.format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-theleaf%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%B9%B6%E4%B8%94%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9readonly"><span class="nav-number">3.2.</span> <span class="nav-text">2. theleaf中使用三目运算符,并且不能修改readonly</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4-dates-createNow"><span class="nav-number">3.3.</span> <span class="nav-text">3. 获取当前时间#dates.createNow()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%80%89%E6%8B%A9%E9%A1%B9-%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%B9%E5%BA%94%E7%9A%84%E6%98%AF%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%841"><span class="nav-number">3.4.</span> <span class="nav-text">4. 选择项,管理员对应的是数据库中的1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">用法</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -165,13 +165,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -248,9 +248,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-11-09 09:09:41 / 修改时间：09:39:34" itemprop="dateCreated datePublished" datetime="2022-11-09T09:09:41+08:00">2022-11-09</time>
+      <time title="创建时间：2022-11-09 09:09:41" itemprop="dateCreated datePublished" datetime="2022-11-09T09:09:41+08:00">2022-11-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-12-18 22:04:04" itemprop="dateModified" datetime="2022-12-18T22:04:04+08:00">2022-12-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -287,7 +293,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="Thymeleaf的使用规则"><a href="#Thymeleaf的使用规则" class="headerlink" title="Thymeleaf的使用规则"></a>Thymeleaf的使用规则</h1><ul>
+        <h1 id="Thymeleaf的使用规则"><a href="#Thymeleaf的使用规则" class="headerlink" title="Thymeleaf的使用规则"></a>Thymeleaf的使用规则</h1><h3 id="引入约束"><a href="#引入约束" class="headerlink" title="引入约束"></a>引入约束</h3><html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<p>&#x3D;&#x3D;‘xmlns:th&#x3D;”<a target="_blank" rel="noopener" href="http://www.thymeleaf.org’==/">http://www.thymeleaf.org’==</a></p>
+<ul>
 <li><p>在开头常见的需要引入相关的链接<code>xmlns:th=&quot;http://www.thymeleaf.org/thymeleaf-extras-shiro&quot;</code></p>
   <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">class</span>=<span class="string">&quot;no-js&quot;</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>  <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org/thymeleaf-extras-shiro&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    xmlns:th=&quot;http://www.thymeleaf.org&quot;</span><br><span class="line">xmlns:sec=&quot;http://www.thymeleaf.org/extras/spring-security&quot;</span><br><span class="line">xmlns:shiro=&quot;http://www.pollix.at/thymeleaf/shiro&quot;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span> </span></span><br><span class="line"><span class="tag">				<span class="attr">xmlns:sec</span>=<span class="string">&quot;http://www.thymeleaf.org/extras/spring-security&quot;</span></span></span><br><span class="line"><span class="tag">				<span class="attr">xmlns:shiro</span>=<span class="string">&quot;http://www.pollix.at/thymeleaf/shiro&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -347,7 +356,8 @@
 <p><img src="/2022/11/09/Theleaf/Users\kuaihua\AppData\Roaming\Typora\typora-user-images\image-20221013115857358.png" alt="image-20221013115857358"></p>
 <p><img src="/2022/11/09/Theleaf/image-20221013115939759.png" alt="image-20221013115939759"></p>
 <p>这就是结果</p>
-
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><p>所有的html中的元素都可以在theleaf中被替换，使用方式：&#x3D;&#x3D;th：元素名&#x3D;&#x3D;</p>
+</html>
     </div>
 
     
@@ -389,7 +399,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
