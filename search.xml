@@ -532,13 +532,13 @@
 
 
 
-<h4 id="9-4-索引原则"><a href="#9-4-索引原则" class="headerlink" title="9.4 索引原则"></a>9.4 索引原则</h4><ul>
+<h2 id="9-4-索引原则"><a href="#9-4-索引原则" class="headerlink" title="9.4 索引原则"></a>9.4 索引原则</h2><ul>
 <li>索引不是越多越好</li>
 <li>不要对进程变动小的数据添加索引</li>
 <li>小数据了不需要加索引</li>
 <li>索引一般加在常用来查询的数据的字段上(&#x3D;&#x3D;create index id_school_name on student(<code>name</code>)&#x3D;&#x3D;)</li>
 </ul>
-<h3 id="9-5索引的数据结构"><a href="#9-5索引的数据结构" class="headerlink" title="9.5索引的数据结构"></a>9.5索引的数据结构</h3><p>hash 类型的索引</p>
+<h2 id="9-5索引的数据结构"><a href="#9-5索引的数据结构" class="headerlink" title="9.5索引的数据结构"></a>9.5索引的数据结构</h2><p>hash 类型的索引</p>
 <p>Btree: innodb 的默认数据结构</p>
 <h1 id="10-权限管理和备份"><a href="#10-权限管理和备份" class="headerlink" title="10.权限管理和备份"></a>10.权限管理和备份</h1><h2 id="10-1创建用户和改变用户权限"><a href="#10-1创建用户和改变用户权限" class="headerlink" title="10.1创建用户和改变用户权限"></a>10.1创建用户和改变用户权限</h2><p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230110221503332.png" alt="image-20230110221503332"></p>
 <h2 id="10-2-数据库备份"><a href="#10-2-数据库备份" class="headerlink" title="10.2 数据库备份"></a>10.2 数据库备份</h2><p>数据备份的原因:</p>
@@ -2115,10 +2115,5 @@
       <categories>
         <category>SpringBoot</category>
       </categories>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2023/01/08/Untitled/</url>
-    <content><![CDATA[]]></content>
   </entry>
 </search>
