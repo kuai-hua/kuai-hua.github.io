@@ -577,7 +577,7 @@
 <li>概要设计:设计关系图E_R图</li>
 </ul>
 <p><strong>举例(个人博客为例)</strong></p>
-<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/Hexo\hexoblog\source_posts\Mysql相关笔记\image-20230111122807933.png" alt="image-20230111122807933"></p>
+<p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230111122807933.png" alt="image-20230111122807933"></p>
 <ul>
 <li><p>需求分析:</p>
 <ul>
@@ -619,7 +619,7 @@
 <p>  第二范式(2NF)：满足第一范式；且不存在部分依赖，即非主属性必须完全依赖于主属性。(主属性即主键；完全依赖是针对于联合主键的情况，非主键列不能只依赖于主键的一部分)</p>
 <p>  &#x3D;&#x3D;理解:每张表只做一件事情,比如,一张订单表,可以记录订单的金额,数量,单价,但是不能记录订单的时间,订单的总额&#x3D;&#x3D;</p>
 <p>  **第三范式(3NF)**：满足第二范式；且不存在传递依赖，即非主属性不能与非主属性之间有依赖关系，非主属性必须直接依赖于主属性，不能间接依赖主属性。（A -&gt; B, B -&gt;C, A -&gt; C）</p>
-<p>  &#x3D;&#x3D;理解:保证每一列数据与主键都是直接相关的,不能是间接相关的,这样才符合。</p>
+<p>  &#x3D;&#x3D;理解:保证每一列数据与主键都是直接相关的,不能是间接相关的,这样才符合。&#x3D;&#x3D;</p>
 </li>
 </ul>
 <p>&#x3D;&#x3D;总结&#x3D;&#x3D;：</p>
@@ -631,7 +631,7 @@
 <li>故意从某些表中添加数据，从多表查询变成单表查询</li>
 <li>故意添加计算列，从大数据量变成小数据量</li>
 </ul>
-<h1 id="13-JDBC（重点）"><a href="#13-JDBC（重点）" class="headerlink" title="13.JDBC（重点）"></a>13.JDBC（重点）</h1><h2 id="1-数据库驱动"><a href="#1-数据库驱动" class="headerlink" title="1.数据库驱动"></a>1.数据库驱动</h2><p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/Hexo\hexoblog\source_posts\Mysql相关笔记\image-20230111192448063.png" alt="image-20230111192448063"></p>
+<h1 id="13-JDBC（重点）"><a href="#13-JDBC（重点）" class="headerlink" title="13.JDBC（重点）"></a>13.JDBC（重点）</h1><h2 id="1-数据库驱动"><a href="#1-数据库驱动" class="headerlink" title="1.数据库驱动"></a>1.数据库驱动</h2><p><img src="/2022/11/09/Mysql%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230111192448063.png" alt="image-20230111192448063"></p>
 <h2 id="2-JDBC"><a href="#2-JDBC" class="headerlink" title="2.JDBC"></a>2.JDBC</h2><p>java.sql</p>
 <p>javax.sql</p>
 <p>一个数据库驱动程序</p>
