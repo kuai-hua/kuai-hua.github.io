@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/red/pace-theme-loading-bar.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"kuai-hua.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Java如何实现不可变类  12341. 确保类是fina的,不允许被继承2. 确保所有的成员的变量是final修饰的,只能在构造方法在宏初始化值,并且不会被修改3. 不提供setter方法4. 如果要修改类的状态,必须放回一个新的对象  抽象类和接口有什么区别,类可以继承多个类吗,接口可以继承多个接口吗,类可以实现多个接口吗?  1234567891011121314- 接口(interfac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA面试题">
+<meta property="og:url" content="https://kuai-hua.github.io/2022/11/11/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="Kuai-hua&#39;s Blog">
+<meta property="og:description" content="Java如何实现不可变类  12341. 确保类是fina的,不允许被继承2. 确保所有的成员的变量是final修饰的,只能在构造方法在宏初始化值,并且不会被修改3. 不提供setter方法4. 如果要修改类的状态,必须放回一个新的对象  抽象类和接口有什么区别,类可以继承多个类吗,接口可以继承多个接口吗,类可以实现多个接口吗?  1234567891011121314- 接口(interfac">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-11T01:28:23.000Z">
+<meta property="article:modified_time" content="2023-02-04T10:33:26.331Z">
+<meta property="article:author" content="Kuai-hua">
+<meta property="article:tag" content="SpringMVC,SpringBoot,Mybatis,Mysql,SpringCloud">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://kuai-hua.github.io/2022/11/11/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://kuai-hua.github.io/2022/11/11/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98/","path":"2022/11/11/JAVA面试题/","title":"JAVA面试题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JAVA面试题 | Kuai-hua's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Kuai-hua's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kuai-hua"
+      src="https://desk-fd.zol-img.com.cn/t_s1024x768c5/g5/M00/01/0E/ChMkJ1bKweuIdLkyAANw0X0weRcAALGgABSD-sAA3Dp650.jpg">
+  <p class="site-author-name" itemprop="name">Kuai-hua</p>
+  <div class="site-description" itemprop="description">从现在开始</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Kuai-hua" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Kuai-hua" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kuai-hua.github.io/2022/11/11/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://desk-fd.zol-img.com.cn/t_s1024x768c5/g5/M00/01/0E/ChMkJ1bKweuIdLkyAANw0X0weRcAALGgABSD-sAA3Dp650.jpg">
+      <meta itemprop="name" content="Kuai-hua">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kuai-hua's Blog">
+      <meta itemprop="description" content="从现在开始">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="JAVA面试题 | Kuai-hua's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JAVA面试题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-11 09:28:23" itemprop="dateCreated datePublished" datetime="2022-11-11T09:28:23+08:00">2022-11-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-02-04 18:33:26" itemprop="dateModified" datetime="2023-02-04T18:33:26+08:00">2023-02-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span id="/2022/11/11/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98/" class="post-meta-item leancloud_visitors" data-flag-title="JAVA面试题" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <ol>
+<li><p>Java如何实现不可变类</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 确保类是fina的,不允许被继承</span><br><span class="line">2. 确保所有的成员的变量是final修饰的,只能在构造方法在宏初始化值,并且不会被修改</span><br><span class="line">3. 不提供setter方法</span><br><span class="line">4. 如果要修改类的状态,必须放回一个新的对象</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>抽象类和接口有什么区别,类可以继承多个类吗,接口可以继承多个接口吗,类可以实现多个接口吗?</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- 接口(interface) </span><br><span class="line">	1. 只能定义静态变量和抽象方法,无论是普通类和抽象类都没有这么严格的要求,所以它也不能继承普通类和抽象类.</span><br><span class="line">	2. 接口不能有实例对象,接口连构造器跟方法都没有</span><br><span class="line">	3. 打破单继承,实现多重伪继承</span><br><span class="line">	4. 接口只能继承接口(不能继承普通类和抽象类),且可以多继承</span><br><span class="line"></span><br><span class="line">- 抽象类(abstract)</span><br><span class="line">	1. 抽象类不能被实例化</span><br><span class="line">	2. 抽象方法一定包含在抽象类中,抽象类中的不一定都是抽象方法</span><br><span class="line">	3. 一个类如果继承这个抽象类,必须重写这个类的抽象方法</span><br><span class="line">	4. 抽象类主要是用来被继承的</span><br><span class="line">	5. 抽象方法和抽象类不能被final修饰</span><br><span class="line">	6. 有抽象类A,B,C,如果A继承B,如果A不重写B中的抽象方法,A然后被C继承,那么C必须重写B的抽象 方法</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>jdk1.5中引入了泛型,泛型存在是用来解决什么问题的</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">泛型是的存在是为了解决,多种数据类型执行相同的代码,实现(代码复用),</span><br><span class="line">泛型的类型在使用的时候指定,不需要强制类型转换.</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>JAVA的反射机制</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">反射就是只有在运行的时候才知道操作的类是什么,并且可以在运行的时候获取类的完整构造,并调用对应的方法.</span><br><span class="line">- 主要功能</span><br><span class="line">	1. 在运行的时候判断任意一个了类的所属对象</span><br><span class="line">	2. 运行时构造任意一个类对象</span><br><span class="line">	3. 运行时判断一个类所具有的成员变量和成员方法</span><br><span class="line">	4. 运行时调用任意一个对象的方法,通过反射实现对private修饰的方法</span><br><span class="line">	5. 生成动态代理</span><br><span class="line">- 反射的应用</span><br><span class="line">	1. Spring的IOC框架基于反射的创建对象和设置依赖属性</span><br><span class="line">	2. springMVC的请求调用对应的方法</span><br><span class="line">	3. JDBC的class.forName(string className)<span class="string">&#x27;</span></span><br><span class="line"><span class="string">- 反射的优点</span></span><br><span class="line"><span class="string">	1. 增加的了代码的灵活性,避免吧代码写死了</span></span><br><span class="line"><span class="string">	2. 可以在程序运行的时候操作这些对象</span></span><br><span class="line"><span class="string">	3. 测试时,利用反射API访问类的私有成员,保证代码覆盖率</span></span><br><span class="line"><span class="string">- 反射的缺点</span></span><br><span class="line"><span class="string">	1. 性能问题</span></span><br><span class="line"><span class="string">		a.解释操作,用字段与方法接入时远慢于至直接代码.(一般用在对灵活性与扩展性要求很高的系统框架上)</span></span><br><span class="line"><span class="string">		b.反射包含了动态模型,所以JVM很难对其进行优化.所以效率要比非反射操作低得多.要避免在对性能要求很高的的程序使用反射</span></span><br><span class="line"><span class="string">	2. 反射模糊内部逻辑(不便于维护)</span></span><br><span class="line"><span class="string">		持续人员一般喜欢看到代码的逻辑关系,但是反射的存在是逻辑相对混乱.</span></span><br><span class="line"><span class="string">	3. 内部暴露</span></span><br><span class="line"><span class="string">		由于反射允许代码执行一些在正常情况下不被允许的操作,所以使用反射会导致意料之外的副作用,比如,代码功能上的错误,降低可移植性.并且反射破坏了抽象性,所以平台改变的时候,代码行为也可能发生改变.</span></span><br><span class="line"><span class="string">		</span></span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>有哪些Map类是比较常用改的,都有什么区别,HashMap是线程安全的吗,&#x3D;&#x3D;并发&#x3D;&#x3D;下使用的map是什么,它们内部的原理是什么,比如存储范式,hashcode,扩容,默认容量等</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">常用的Map类有:HashMap,HashTable,LinkedHashmap,TreeMap</span><br><span class="line"></span><br><span class="line">在Map中插入,删除,定位元素:HashMap</span><br><span class="line">要按照自定义顺序火自然顺序遍历:TreeMap</span><br><span class="line">要求输入顺序 和输出顺序相同:LinkedHashMap</span><br><span class="line"></span><br><span class="line">从内部数据结构分析:</span><br><span class="line">	HashMap: 数组 + 链表/红黑树</span><br><span class="line">	HashTable:数据 + 链表</span><br><span class="line">	LinkedHashMap:双向链表</span><br><span class="line">	TreeMap:红黑树</span><br><span class="line">	</span><br><span class="line">从线程安全:</span><br><span class="line">	除了HashTable是线程安全的,其他都是非线程</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>为什么string被设计为不可变的?</p>
+</li>
+<li><p>Overload,Override,Overwrite的介绍</p>
+</li>
+<li><p>浅拷贝与深拷贝</p>
+</li>
+<li><p>在自己的代码中创建一个java.lang.String 类,这个类为什么&#x3D;&#x3D;不会&#x3D;&#x3D;被类加载器加载</p>
+</li>
+<li><p>Object中有哪些常用的方法</p>
+</li>
+<li><p>动态代理的几种实现方式,分别说出他们的优缺点</p>
+</li>
+<li><p>如何使用在线调试用具Arthas</p>
+</li>
+<li><p>C10K问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C10K问题:一个优化网络套接字以同时处理大量客户端链接的问题.表示可以同时处理10k个并发连接.</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>Http与Https的主要区别是什么</p>
+</li>
+<li><p>Java中线程间有哪些通信方式</p>
+</li>
+<li><p>简单说说你了解的类加载器,可以打破双亲委派机制,如何打破?</p>
+</li>
+<li></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/10/mybatis/" rel="prev" title="mybatis">
+                  <i class="fa fa-chevron-left"></i> mybatis
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/11/java%E5%9F%BA%E7%A1%80%E5%A4%8D%E4%B9%A0/" rel="next" title="java基础知识回顾">
+                  java基础知识回顾 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kuai-hua</span>
+</div>
+<div class="busuanzi-count">
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"5FvLcxvoP7bZCapbl8eSk61f-gzGzoHsz","appKey":"bJTS0ZfxmmgU96djhQc4whBd","serverURLs":"https://5fvlcxvo.lc-cn-n1-shared.com","placeholder":"期待你的评论","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":true,"comment_count":true,"recordIP":true,"enableQQ":true,"requiredFields":["nick","mail"],"el":"#valine-comments","path":"/2022/11/11/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
+

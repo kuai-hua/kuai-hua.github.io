@@ -635,6 +635,107 @@
 <h2 id="2-JDBC"><a href="#2-JDBC" class="headerlink" title="2.JDBC"></a>2.JDBC</h2><p>java.sql</p>
 <p>javax.sql</p>
 <p>一个数据库驱动程序</p>
+<p>手写的java启动数据库驱动代码</p>
+<p>&#x3D;&#x3D;常见的代码样式&#x3D;&#x3D;</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> lesson1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestJdbc</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException, SQLException &#123;</span><br><span class="line">        <span class="comment">// 加载驱动</span></span><br><span class="line">        Class.forName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 用户</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;jdbc:mysql://localhost:3306/school?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> <span class="string">&quot;root&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">password</span> <span class="operator">=</span> <span class="string">&quot;888888&quot;</span>;</span><br><span class="line">        <span class="comment">// 获取连接</span></span><br><span class="line">        <span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> DriverManager.getConnection(url,username,password);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取mysql执行对象</span></span><br><span class="line">        <span class="type">Statement</span> <span class="variable">statement</span> <span class="operator">=</span> connection.createStatement();</span><br><span class="line">        <span class="comment">// 执行对象执行sql语句</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;select * from student where name = &#x27;用户1&#x27;&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="type">ResultSet</span> <span class="variable">resultSet</span> <span class="operator">=</span> statement.executeQuery(sql);</span><br><span class="line">        <span class="comment">// 输出执行结果</span></span><br><span class="line">        <span class="keyword">while</span> (resultSet.next())&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;id:&quot;</span>+resultSet.getObject(<span class="string">&quot;id&quot;</span>));</span><br><span class="line">            System.out.println(<span class="string">&quot;name:&quot;</span>+resultSet.getObject(<span class="string">&quot;name&quot;</span>));</span><br><span class="line">            System.out.println(<span class="string">&quot;email:&quot;</span>+resultSet.getObject(<span class="string">&quot;email&quot;</span>));</span><br><span class="line">            System.out.println(<span class="string">&quot;phone:&quot;</span>+resultSet.getObject(<span class="string">&quot;phone&quot;</span>));</span><br><span class="line">            System.out.println(<span class="string">&quot;age:&quot;</span>+resultSet.getObject(<span class="string">&quot;age&quot;</span>));</span><br><span class="line">            System.out.println(<span class="string">&quot;current_time:&quot;</span>+resultSet.getObject(<span class="string">&quot;current_time&quot;</span>));</span><br><span class="line">            System.out.println(<span class="string">&quot;update_time:&quot;</span>+resultSet.getObject(<span class="string">&quot;update_time&quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 关闭连接</span></span><br><span class="line">        resultSet.close();</span><br><span class="line">        statement.close();</span><br><span class="line">        connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>&#x3D;&#x3D;步骤详情&#x3D;&#x3D;</p>
+<ol>
+<li>加载数据库驱动(就是driver),Class.forname(mysql.)</li>
+<li>需要连接数据库(需要数据库的url,username,password),通过DriverManager.getConnection得到对象connection</li>
+<li>通过connection的createStatement方法来&#x3D;&#x3D;创造&#x3D;&#x3D;mysql执行对象statement,通过</li>
+<li>操作mysql对象执行mysql语句</li>
+<li>输出sql输出结果</li>
+<li>关闭连接</li>
+</ol>
+<h2 id="3-执行对象statement"><a href="#3-执行对象statement" class="headerlink" title="3.执行对象statement"></a>3.执行对象statement</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Statement statement = connection.createStatement();</span><br></pre></td></tr></table></figure>
+
+<p>eg:statement.executeUpdate(sql);</p>
+<p>需要记住的只有两个&#x3D;&#x3D;executeQuery&#x3D;&#x3D;和&#x3D;&#x3D;executeUpdate&#x3D;&#x3D;</p>
+<p><code>executeQuery</code>:只有在查询的时候会只用到这个</p>
+<p><code>executeUpdate</code>:增删改都使用这个</p>
+<h2 id="4常用的工具类"><a href="#4常用的工具类" class="headerlink" title="4常用的工具类"></a>4常用的工具类</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JdbcUtils</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="type">String</span> <span class="variable">driver</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="type">String</span> <span class="variable">user</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="type">String</span> <span class="variable">password</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">// 静态方法,程序执行前就加载好了</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="comment">// 获取数据库数据文件</span></span><br><span class="line">           <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> JdbcUtils.class.getClassLoader().getResourceAsStream(<span class="string">&quot;db.properties&quot;</span>);</span><br><span class="line">           <span class="comment">// 获取数据流</span></span><br><span class="line">           <span class="type">Properties</span> <span class="variable">properties</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">           properties.load(is);</span><br><span class="line">           <span class="comment">// 读取文件</span></span><br><span class="line">           driver = properties.getProperty(<span class="string">&quot;driver&quot;</span>);</span><br><span class="line">           url = properties.getProperty(<span class="string">&quot;url&quot;</span>);</span><br><span class="line">           user = properties.getProperty(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">           password = properties.getProperty(<span class="string">&quot;password&quot;</span>);</span><br><span class="line">           <span class="comment">// 驱动只需要加载一次</span></span><br><span class="line">           <span class="comment">// 连接数据库</span></span><br><span class="line">           Class.forName(driver);</span><br><span class="line">           <span class="comment">// 用户</span></span><br><span class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获取数据连接</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title function_">getConnection</span><span class="params">()</span> <span class="keyword">throws</span> SQLException &#123;</span><br><span class="line">        <span class="keyword">return</span> DriverManager.getConnection(url, user,password);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 关闭数据连接</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">MyClose</span><span class="params">(ResultSet resultSet, Statement statement, Connection connection)</span> <span class="keyword">throws</span> SQLException &#123;</span><br><span class="line">        <span class="keyword">if</span>(resultSet!=<span class="literal">null</span>)&#123;</span><br><span class="line">            resultSet.close();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(statement!=<span class="literal">null</span>)&#123;</span><br><span class="line">                    statement.close();</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">if</span>(connection!=<span class="literal">null</span>)&#123;</span><br><span class="line">                    connection.close();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-SQL注入"><a href="#5-SQL注入" class="headerlink" title="5.SQL注入"></a>5.SQL注入</h2><p>&#x3D;&#x3D;理解&#x3D;&#x3D;:通过非法组装字符串,来实现该条语句的sql语句一直都是可以运行的.</p>
+<h2 id="6-解决sql注入问题-与Mybatis相似"><a href="#6-解决sql注入问题-与Mybatis相似" class="headerlink" title="6.解决sql注入问题(与Mybatis相似)"></a>6.解决sql注入问题(与Mybatis相似)</h2><p>使用PrepareStatement类,而不是statement</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> lesson1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> utils.JdbcUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.PreparedStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestPreJDBC</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> SQLException &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="comment">// 此处与statement不同</span></span><br><span class="line">        <span class="type">PreparedStatement</span> <span class="variable">statement</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ResultSet</span> <span class="variable">rs</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            connection = JdbcUtils.getConnection();</span><br><span class="line">            <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;select * from student where name = ?&quot;</span>;</span><br><span class="line">			<span class="comment">// 直接开始预编译sql,不用创建一个statement.</span></span><br><span class="line">            statement = connection.prepareStatement(sql);</span><br><span class="line">            <span class="comment">// 传入第一个问号的值,第一个1是位置,从1开始,而不是从0</span></span><br><span class="line">            statement.setString(<span class="number">1</span>,<span class="string">&quot;用户1&quot;</span>);</span><br><span class="line">			<span class="comment">// 直接执行就行,前面预编译</span></span><br><span class="line">            rs = statement.executeQuery();</span><br><span class="line">            <span class="keyword">if</span> (rs.next())&#123;</span><br><span class="line">                System.out.println(rs.getString(<span class="string">&quot;name&quot;</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            JdbcUtils.MyClose(rs,statement,connection);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p>&#x3D;&#x3D;我们的是业务级别的mysql&#x3D;&#x3D;</p>
 <p>还有一个&#x3D;&#x3D;运维级别的mysql学习&#x3D;&#x3D;</p>
 ]]></content>
@@ -1933,7 +2034,7 @@
 <h4 id="第二种：实现runable实现龟兔赛跑"><a href="#第二种：实现runable实现龟兔赛跑" class="headerlink" title="第二种：实现runable实现龟兔赛跑"></a>第二种：实现runable实现龟兔赛跑</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">KuangRace</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String winner;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">            <span class="type">boolean</span> <span class="variable">flag</span> <span class="operator">=</span> gameOver(i);</span><br><span class="line">            <span class="keyword">if</span> (flag)&#123;</span><br><span class="line">                <span class="keyword">break</span>;  <span class="comment">// 游戏结束</span></span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot;跑了第&quot;</span>+ i + <span class="string">&quot;步!&quot;</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">gameOver</span><span class="params">(<span class="type">int</span> steps)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (winner != <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;        <span class="comment">// 有胜利者游戏就结束了</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(steps &gt;= <span class="number">100</span>)&#123;       <span class="comment">// 步数到了100就说明胜利者产生了</span></span><br><span class="line">            winner = Thread.currentThread().getName();</span><br><span class="line">            System.out.println(<span class="string">&quot;======================Winner is &quot;</span>+ winner);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">KuangRace</span> <span class="variable">kuangRace</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">KuangRace</span>();</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(kuangRace,<span class="string">&quot;乌龟&quot;</span>).start();</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(kuangRace,<span class="string">&quot;兔子&quot;</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h4 id="第三种-Callable"><a href="#第三种-Callable" class="headerlink" title="第三种: Callable"></a>第三种: Callable</h4><p><img src="/2022/11/17/%E5%A4%9A%E7%BA%BF%E7%A8%8B/image-20221118200600467.png" alt="image-20221118200600467"><img src="/2022/11/17/%E5%A4%9A%E7%BA%BF%E7%A8%8B/image-20221118200935149.png" alt="image-20221118200935149"></p>
 <p><img src="/2022/11/17/%E5%A4%9A%E7%BA%BF%E7%A8%8B/image-20221118200834841.png" alt="image-20221118200834841"></p>
-<h3 id="Lambda-演化过程"><a href="#Lambda-演化过程" class="headerlink" title="Lambda(演化过程)"></a>Lambda(演化过程)</h3><p><img src="/2022/11/17/%E5%A4%9A%E7%BA%BF%E7%A8%8B/image-20221119205658127.png" alt="image-20221119205658127"></p>
+<h3 id="xxxxxxxxxx7-1-post-body-p-a-2-color-0000FF-蓝色3-border-bottom-none-下划线4-amp-hover-5-color-FF0000-红色6-7-bash"><a href="#xxxxxxxxxx7-1-post-body-p-a-2-color-0000FF-蓝色3-border-bottom-none-下划线4-amp-hover-5-color-FF0000-红色6-7-bash" class="headerlink" title="xxxxxxxxxx7 1.post-body p a{2  color: #0000FF;       # 蓝色3  border-bottom: none;      # 下划线4  &amp;:hover{5    color: #FF0000;     # 红色6  }7}bash"></a>xxxxxxxxxx7 1.post-body p a{2  color: #0000FF;       # 蓝色3  border-bottom: none;      # 下划线4  &amp;:hover{5    color: #FF0000;     # 红色6  }7}bash</h3><p><img src="/2022/11/17/%E5%A4%9A%E7%BA%BF%E7%A8%8B/image-20221119205658127.png" alt="image-20221119205658127"></p>
 <p><strong>从1~6是逐步发展的过程,是逐渐简化的过程,需要习惯,所有事情</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kuaihua.lambda;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestLambda</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3.静态内部类</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Like2</span> <span class="keyword">implements</span> <span class="title class_">ILike</span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">lambda</span><span class="params">()</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;====Lambda2====&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">ILike</span> <span class="variable">like</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Like</span>();</span><br><span class="line">        like.lambda();</span><br><span class="line"></span><br><span class="line">        like = <span class="keyword">new</span> <span class="title class_">Like2</span>();</span><br><span class="line">        like.lambda();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.局部内部类</span></span><br><span class="line">        <span class="keyword">class</span> <span class="title class_">Like3</span> <span class="keyword">implements</span> <span class="title class_">ILike</span>&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">lambda</span><span class="params">()</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;====Lambda3====&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        like = <span class="keyword">new</span> <span class="title class_">Like3</span>();</span><br><span class="line">        like.lambda();</span><br><span class="line"></span><br><span class="line">        like = <span class="keyword">new</span> <span class="title class_">ILike</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">lambda</span><span class="params">()</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;====Lambda4====&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        like.lambda();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 6.用lambda来简化</span></span><br><span class="line">        like = ()-&gt;&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;====Lambda5====&quot;</span>);</span><br><span class="line">        &#125;;</span><br><span class="line">        like.lambda();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1.定义一个函数式接口</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ILike</span>&#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">lambda</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 实现一个接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Like</span> <span class="keyword">implements</span> <span class="title class_">ILike</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">lambda</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;====Lambda====&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -2114,6 +2215,61 @@
 ]]></content>
       <categories>
         <category>SpringBoot</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JAVA面试题</title>
+    <url>/2022/11/11/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<ol>
+<li><p>Java如何实现不可变类</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1. 确保类是fina的,不允许被继承</span><br><span class="line">2. 确保所有的成员的变量是final修饰的,只能在构造方法在宏初始化值,并且不会被修改</span><br><span class="line">3. 不提供setter方法</span><br><span class="line">4. 如果要修改类的状态,必须放回一个新的对象</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>抽象类和接口有什么区别,类可以继承多个类吗,接口可以继承多个接口吗,类可以实现多个接口吗?</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">- 接口(interface) </span><br><span class="line">	1. 只能定义静态变量和抽象方法,无论是普通类和抽象类都没有这么严格的要求,所以它也不能继承普通类和抽象类.</span><br><span class="line">	2. 接口不能有实例对象,接口连构造器跟方法都没有</span><br><span class="line">	3. 打破单继承,实现多重伪继承</span><br><span class="line">	4. 接口只能继承接口(不能继承普通类和抽象类),且可以多继承</span><br><span class="line"></span><br><span class="line">- 抽象类(abstract)</span><br><span class="line">	1. 抽象类不能被实例化</span><br><span class="line">	2. 抽象方法一定包含在抽象类中,抽象类中的不一定都是抽象方法</span><br><span class="line">	3. 一个类如果继承这个抽象类,必须重写这个类的抽象方法</span><br><span class="line">	4. 抽象类主要是用来被继承的</span><br><span class="line">	5. 抽象方法和抽象类不能被final修饰</span><br><span class="line">	6. 有抽象类A,B,C,如果A继承B,如果A不重写B中的抽象方法,A然后被C继承,那么C必须重写B的抽象 方法</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>jdk1.5中引入了泛型,泛型存在是用来解决什么问题的</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">泛型是的存在是为了解决,多种数据类型执行相同的代码,实现(代码复用),</span><br><span class="line">泛型的类型在使用的时候指定,不需要强制类型转换.</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>JAVA的反射机制</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">反射就是只有在运行的时候才知道操作的类是什么,并且可以在运行的时候获取类的完整构造,并调用对应的方法.</span><br><span class="line">- 主要功能</span><br><span class="line">	1. 在运行的时候判断任意一个了类的所属对象</span><br><span class="line">	2. 运行时构造任意一个类对象</span><br><span class="line">	3. 运行时判断一个类所具有的成员变量和成员方法</span><br><span class="line">	4. 运行时调用任意一个对象的方法,通过反射实现对private修饰的方法</span><br><span class="line">	5. 生成动态代理</span><br><span class="line">- 反射的应用</span><br><span class="line">	1. Spring的IOC框架基于反射的创建对象和设置依赖属性</span><br><span class="line">	2. springMVC的请求调用对应的方法</span><br><span class="line">	3. JDBC的class.forName(string className)<span class="string">&#x27;</span></span><br><span class="line"><span class="string">- 反射的优点</span></span><br><span class="line"><span class="string">	1. 增加的了代码的灵活性,避免吧代码写死了</span></span><br><span class="line"><span class="string">	2. 可以在程序运行的时候操作这些对象</span></span><br><span class="line"><span class="string">	3. 测试时,利用反射API访问类的私有成员,保证代码覆盖率</span></span><br><span class="line"><span class="string">- 反射的缺点</span></span><br><span class="line"><span class="string">	1. 性能问题</span></span><br><span class="line"><span class="string">		a.解释操作,用字段与方法接入时远慢于至直接代码.(一般用在对灵活性与扩展性要求很高的系统框架上)</span></span><br><span class="line"><span class="string">		b.反射包含了动态模型,所以JVM很难对其进行优化.所以效率要比非反射操作低得多.要避免在对性能要求很高的的程序使用反射</span></span><br><span class="line"><span class="string">	2. 反射模糊内部逻辑(不便于维护)</span></span><br><span class="line"><span class="string">		持续人员一般喜欢看到代码的逻辑关系,但是反射的存在是逻辑相对混乱.</span></span><br><span class="line"><span class="string">	3. 内部暴露</span></span><br><span class="line"><span class="string">		由于反射允许代码执行一些在正常情况下不被允许的操作,所以使用反射会导致意料之外的副作用,比如,代码功能上的错误,降低可移植性.并且反射破坏了抽象性,所以平台改变的时候,代码行为也可能发生改变.</span></span><br><span class="line"><span class="string">		</span></span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>有哪些Map类是比较常用改的,都有什么区别,HashMap是线程安全的吗,&#x3D;&#x3D;并发&#x3D;&#x3D;下使用的map是什么,它们内部的原理是什么,比如存储范式,hashcode,扩容,默认容量等</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">常用的Map类有:HashMap,HashTable,LinkedHashmap,TreeMap</span><br><span class="line"></span><br><span class="line">在Map中插入,删除,定位元素:HashMap</span><br><span class="line">要按照自定义顺序火自然顺序遍历:TreeMap</span><br><span class="line">要求输入顺序 和输出顺序相同:LinkedHashMap</span><br><span class="line"></span><br><span class="line">从内部数据结构分析:</span><br><span class="line">	HashMap: 数组 + 链表/红黑树</span><br><span class="line">	HashTable:数据 + 链表</span><br><span class="line">	LinkedHashMap:双向链表</span><br><span class="line">	TreeMap:红黑树</span><br><span class="line">	</span><br><span class="line">从线程安全:</span><br><span class="line">	除了HashTable是线程安全的,其他都是非线程</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>为什么string被设计为不可变的?</p>
+</li>
+<li><p>Overload,Override,Overwrite的介绍</p>
+</li>
+<li><p>浅拷贝与深拷贝</p>
+</li>
+<li><p>在自己的代码中创建一个java.lang.String 类,这个类为什么&#x3D;&#x3D;不会&#x3D;&#x3D;被类加载器加载</p>
+</li>
+<li><p>Object中有哪些常用的方法</p>
+</li>
+<li><p>动态代理的几种实现方式,分别说出他们的优缺点</p>
+</li>
+<li><p>如何使用在线调试用具Arthas</p>
+</li>
+<li><p>C10K问题</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C10K问题:一个优化网络套接字以同时处理大量客户端链接的问题.表示可以同时处理10k个并发连接.</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>Http与Https的主要区别是什么</p>
+</li>
+<li><p>Java中线程间有哪些通信方式</p>
+</li>
+<li><p>简单说说你了解的类加载器,可以打破双亲委派机制,如何打破?</p>
+</li>
+<li></li>
+</ol>
+]]></content>
+      <categories>
+        <category>java</category>
       </categories>
   </entry>
 </search>
