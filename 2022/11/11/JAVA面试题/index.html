@@ -22,18 +22,20 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"kuai-hua.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Java如何实现不可变类  12341. 确保类是fina的,不允许被继承2. 确保所有的成员的变量是final修饰的,只能在构造方法在宏初始化值,并且不会被修改3. 不提供setter方法4. 如果要修改类的状态,必须放回一个新的对象  抽象类和接口有什么区别,类可以继承多个类吗,接口可以继承多个接口吗,类可以实现多个接口吗?  1234567891011121314- 接口(interfac">
+    <meta name="description" content="Java如何实现不可变类  12341. 确保类是fina的,不允许被继承2. 确保所有的成员的变量是final修饰的,只能在构造方法在宏初始化值,并且不会被修改3. 不提供setter方法4. 如果要修改类的状态,必须放回一个新的对象  抽象类和接口有什么区别,类可以继承多个类吗,接口可以继承多个接口吗,类可以实现多个接口吗?  1234567891011121314151617 - 接口(i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA面试题">
 <meta property="og:url" content="https://kuai-hua.github.io/2022/11/11/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
 <meta property="og:site_name" content="Kuai-hua&#39;s Blog">
-<meta property="og:description" content="Java如何实现不可变类  12341. 确保类是fina的,不允许被继承2. 确保所有的成员的变量是final修饰的,只能在构造方法在宏初始化值,并且不会被修改3. 不提供setter方法4. 如果要修改类的状态,必须放回一个新的对象  抽象类和接口有什么区别,类可以继承多个类吗,接口可以继承多个接口吗,类可以实现多个接口吗?  1234567891011121314- 接口(interfac">
+<meta property="og:description" content="Java如何实现不可变类  12341. 确保类是fina的,不允许被继承2. 确保所有的成员的变量是final修饰的,只能在构造方法在宏初始化值,并且不会被修改3. 不提供setter方法4. 如果要修改类的状态,必须放回一个新的对象  抽象类和接口有什么区别,类可以继承多个类吗,接口可以继承多个接口吗,类可以实现多个接口吗?  1234567891011121314151617 - 接口(i">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kuai-hua.github.io/2022/11/11/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98%5Cimage-20230210001359438.png">
 <meta property="article:published_time" content="2022-11-11T01:28:23.000Z">
-<meta property="article:modified_time" content="2023-02-04T10:33:26.331Z">
+<meta property="article:modified_time" content="2023-02-16T09:56:25.810Z">
 <meta property="article:author" content="Kuai-hua">
 <meta property="article:tag" content="SpringMVC,SpringBoot,Mybatis,Mysql,SpringCloud">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kuai-hua.github.io/2022/11/11/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98%5Cimage-20230210001359438.png">
 
 
 <link rel="canonical" href="https://kuai-hua.github.io/2022/11/11/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98/">
@@ -159,7 +161,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -250,7 +252,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-02-04 18:33:26" itemprop="dateModified" datetime="2023-02-04T18:33:26+08:00">2023-02-04</time>
+      <time title="修改时间：2023-02-16 17:56:25" itemprop="dateModified" datetime="2023-02-16T17:56:25+08:00">2023-02-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -292,7 +294,7 @@
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 确保类是fina的,不允许被继承</span><br><span class="line">2. 确保所有的成员的变量是final修饰的,只能在构造方法在宏初始化值,并且不会被修改</span><br><span class="line">3. 不提供setter方法</span><br><span class="line">4. 如果要修改类的状态,必须放回一个新的对象</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>抽象类和接口有什么区别,类可以继承多个类吗,接口可以继承多个接口吗,类可以实现多个接口吗?</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- 接口(interface) </span><br><span class="line">	1. 只能定义静态变量和抽象方法,无论是普通类和抽象类都没有这么严格的要求,所以它也不能继承普通类和抽象类.</span><br><span class="line">	2. 接口不能有实例对象,接口连构造器跟方法都没有</span><br><span class="line">	3. 打破单继承,实现多重伪继承</span><br><span class="line">	4. 接口只能继承接口(不能继承普通类和抽象类),且可以多继承</span><br><span class="line"></span><br><span class="line">- 抽象类(abstract)</span><br><span class="line">	1. 抽象类不能被实例化</span><br><span class="line">	2. 抽象方法一定包含在抽象类中,抽象类中的不一定都是抽象方法</span><br><span class="line">	3. 一个类如果继承这个抽象类,必须重写这个类的抽象方法</span><br><span class="line">	4. 抽象类主要是用来被继承的</span><br><span class="line">	5. 抽象方法和抽象类不能被final修饰</span><br><span class="line">	6. 有抽象类A,B,C,如果A继承B,如果A不重写B中的抽象方法,A然后被C继承,那么C必须重写B的抽象 方法</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> - 接口(interface) </span><br><span class="line"> 	1. 只能定义静态变量和抽象方法,无论是普通类和抽象类都没有这么严格的要求,所以它也不能继承普通类和抽象类.</span><br><span class="line"> 	2. 接口不能有实例对象,接口连构造器跟方法都没有</span><br><span class="line"> 	3. 打破单继承,实现多重伪继承</span><br><span class="line"> 	4. 接口只能继承接口(不能继承普通类和抽象类),且可以多继承</span><br><span class="line"> 	</span><br><span class="line">常量默认被public  static final</span><br><span class="line">方法默认被public static   abstractl 修饰</span><br><span class="line"> </span><br><span class="line"> - 抽象类(abstract)</span><br><span class="line"> 	1. 抽象类不能被实例化</span><br><span class="line"> 	2. 抽象方法一定包含在抽象类中,抽象类中的不一定都是抽象方法</span><br><span class="line"> 	3. 一个类如果继承这个抽象类,必须重写这个类的抽象方法</span><br><span class="line"> 	4. 抽象类主要是用来被继承的</span><br><span class="line"> 	5. 抽象方法和抽象类不能被final修饰</span><br><span class="line"> 	6. 有抽象类A,B,C,如果A继承B,如果A不重写B中的抽象方法,A然后被C继承,那么C必须重写B的抽象 方法</span><br><span class="line"> 	</span><br></pre></td></tr></table></figure>
 
 </li>
 <li><p>jdk1.5中引入了泛型,泛型存在是用来解决什么问题的</p>
@@ -308,31 +310,131 @@
 
 </li>
 <li><p>为什么string被设计为不可变的?</p>
-</li>
-<li><p>Overload,Override,Overwrite的介绍</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">    ```</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">7. Overload,Override,Overwrite的介绍</span><br><span class="line"></span><br><span class="line">    ```bash</span><br><span class="line">    - Overload 重载</span><br><span class="line">    	同一个类中,同样的方法名,不一样的参数设置,这就是重载</span><br><span class="line">    	可以改变返回值,改变访问修饰符,改变异常变量和数量</span><br><span class="line">    </span><br><span class="line">    - Override 覆盖</span><br><span class="line">    	</span><br><span class="line">    - Overwrite 重写</span><br><span class="line">    	覆盖与重写之间大致是差不多的,个人理解,重写与覆盖一致</span><br><span class="line">    	规则:</span><br><span class="line">    	 	1. 重写纯在与子类与父类之间键</span><br><span class="line">    	 	2. 子类的方法名,参数必须与父类一样,接口就是这样</span><br><span class="line">    	 	3. 返回值不一定要与父类的一样,但是必须得是父类的派生类</span><br><span class="line">    	 	4. 声明为final的方法不能被重写</span><br><span class="line">    	 	5. 声明为static的方法不能被重写</span><br><span class="line">    	 	6. 构造器不能被重写</span><br><span class="line">    	 	7. 子类与父类在同一个包下,子类可以重写父类的所有方法(除了fianl和private)</span><br><span class="line">    	 	8.子类与父类在不同包是,子类只能重写父类的public 和protected的非final方法</span><br><span class="line">    	 	9.可以抛出 任意非强制性异常,但是不能抛出新的强制性异常,或比父类更广泛的异常</span><br><span class="line">    	 	</span><br></pre></td></tr></table></figure>
+
 </li>
 <li><p>浅拷贝与深拷贝</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">浅拷贝是只是复制了被复制变量的内存地址,复制的只是指针,但是还是用的同样的内存空间</span><br><span class="line">深拷贝不仅复制了一个一模一样的对象,但是不一样的内存地址</span><br></pre></td></tr></table></figure>
+
 </li>
 <li><p>在自己的代码中创建一个java.lang.String 类,这个类为什么&#x3D;&#x3D;不会&#x3D;&#x3D;被类加载器加载</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">这就要说道java的双亲委派机制,要记住的是双亲委派机制两个特点:向上委托,向下委派</span><br><span class="line">	向上委托:自定义加载器 然后到系统类加载器,然后收到扩展类加载器,最后到启动类加载器</span><br><span class="line">	向下委派:启动类加载器,然后到扩展类加载器,然后是系统类加载器,最后才到我们的自定义类加载器</span><br><span class="line"></span><br><span class="line">每一层之间的关系都组合关系,而不是继承关系</span><br><span class="line"></span><br><span class="line">这样的机制的是为了保证系统的安全性,保证所以的java类库都是有启动类加载器加载的,而不是有我们自定义类的加载器加载的.</span><br></pre></td></tr></table></figure>
+
 </li>
-<li><p>Object中有哪些常用的方法</p>
+<li><p>Object中有哪些常用的方法,说说他们的含义</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">总体上常用的有:	</span><br><span class="line">equals(Object)	在传统意义上,它与==号是不一样的,但是在Object中他就是一样的</span><br><span class="line">tostring() </span><br><span class="line">notify() 唤醒,配和线程的使用,等待过程中没有拿到想要的锁,就会可以使用这个唤醒想要的进程</span><br><span class="line">notifyAll()</span><br><span class="line"><span class="built_in">wait</span>()	 等待,也是在线程中使用的</span><br><span class="line"><span class="built_in">wait</span>(long)</span><br><span class="line"><span class="built_in">wait</span>(long,int)</span><br><span class="line">finalize()  垃圾回收才会用到,而判断一个是否可以被回收的依据就是这个方法是否被重写</span><br><span class="line">getClass()</span><br><span class="line">hashCode()	一般重写了equals()方法就要重写hashcode()方法,这方法一般用户<span class="built_in">hash</span>查找</span><br><span class="line">Clone()</span><br></pre></td></tr></table></figure>
+
+
 </li>
 <li><p>动态代理的几种实现方式,分别说出他们的优缺点</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">代理分静态代理和动态代理两种,从设计模式上这两个属于代理模式</span><br><span class="line">静态代理的通用性不大,属于一种&quot;硬编码&quot;,这类代码的通用性不高,扩展成本大2</span><br><span class="line">动态代理如今常用的代理技术有三种:</span><br><span class="line">	1. Jdk自带的代理</span><br><span class="line">	2. CGLib提供的类库</span><br><span class="line">对比: </span><br><span class="line">	1. JDK实现了被代理对象的接口,CGLIib继承了被代理对象</span><br><span class="line">	2. 两种代理在运行期间都会生成字节码,JDK直接生成Class字节码,CGLib是使用ASM框架写Class.后者的实现更加复杂,生成代理类比JDk动态代理效率低</span><br><span class="line">	3. JDK的实现方式是使用反射机制,CGLib是使用FastClass机制(索引分配直接使用).因此比CGLib使用效率高.</span><br><span class="line"></span><br><span class="line">开发中根据实际需求合理使用就行</span><br></pre></td></tr></table></figure>
+
 </li>
 <li><p>如何使用在线调试用具Arthas</p>
 </li>
 <li><p>C10K问题</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C10K问题:一个优化网络套接字以同时处理大量客户端链接的问题.表示可以同时处理10k个并发连接.</span><br></pre></td></tr></table></figure>
-
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C10K问题:一个优化网络套接字以同时处理大量客户端链接的问题.表示可以同时处理10k个并发连接.</span><br></pre></td></tr></table></figure>
 
 </li>
 <li><p>Http与Https的主要区别是什么</p>
+<table>
+<thead>
+<tr>
+<th>区别</th>
+<th>Http</th>
+<th>Https</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>安全性</td>
+<td>安全性较差</td>
+<td>安全性较高,可防止关键信息被攻击</td>
+</tr>
+<tr>
+<td>端口(默认)</td>
+<td>80</td>
+<td>443</td>
+</tr>
+<tr>
+<td>协议</td>
+<td>TCP&#x2F;IP</td>
+<td>除了TCP&#x2F;IP,还有TLS&#x2F;SSl秘钥协议</td>
+</tr>
+<tr>
+<td>前缀</td>
+<td>http:&#x2F;&#x2F;</td>
+<td>https:&#x2F;&#x2F;</td>
+</tr>
+<tr>
+<td>用途</td>
+<td>信息共享类网站,比如博客</td>
+<td>用户保护性要求较高的网站,如电子商务平台</td>
+</tr>
+<tr>
+<td>域名合法性</td>
+<td>无需SSL证书</td>
+<td>需要SSL证书</td>
+</tr>
+<tr>
+<td>数据保护</td>
+<td>无</td>
+<td>有</td>
+</tr>
+<tr>
+<td>数据加密</td>
+<td>无</td>
+<td>有</td>
+</tr>
+<tr>
+<td>搜索排名</td>
+<td>无关</td>
+<td>有关</td>
+</tr>
+<tr>
+<td>响应速度</td>
+<td>快</td>
+<td>慢于Http</td>
+</tr>
+</tbody></table>
 </li>
 <li><p>Java中线程间有哪些通信方式</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.volatile(告诉程序所有对改变变量的访问都需要从共享内存中获取,改变也必须同步刷新到共享内存中,保证线程的可见性)和synchronize(保证多个线程的时候,保证只有一个线程可以使用这个线程,保证线程的可见性和排他性)关键字</span><br><span class="line">2. 等待/通知机制  在Objct中两个方法,notify和<span class="built_in">wait</span></span><br><span class="line">3. 管道输入/输出机制</span><br><span class="line">4. Thread.<span class="built_in">join</span>()</span><br><span class="line">5. 使用ThreadLocal</span><br></pre></td></tr></table></figure>
+
 </li>
 <li><p>简单说说你了解的类加载器,可以打破双亲委派机制,如何打破?</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">启动类加载器:加载JDK中的lib目录中的类,被虚拟机认可</span><br><span class="line">扩展类加载器:加载JDk中的etc目录下的类</span><br><span class="line">应用程序类加载器:负责加载用户途径classpath上的类库</span><br><span class="line">自定义类加载器:通过继承java.lang.CLassLoad实现自定义类加载</span><br><span class="line"></span><br><span class="line">为什么是向上委托,先下委派,其实是ClassLoad类中写的,所以如果想要破双亲委派机制也很简单,只需要重写我们的ClassLoad方法就可以了</span><br><span class="line"></span><br><span class="line">Tomcat是如何打破类加载器的</span><br><span class="line">	首先tomcat会有很多的web的程序,所以要把每个web程序使用的类库隔离出来,所以每一个web都有一个独立的webAppClassLoad,tomcat中的WebAppClassLoad打破了双亲委派机制,首先自己尝试去加载某个类,如果找不到,在代理给父类加载器,其目的优先加载web应用程序定义的类.</span><br></pre></td></tr></table></figure>
+
 </li>
-<li></li>
+<li><p>有没有两个不相同的值的Hashcode一样呢</p>
+<p> &#x3D;&#x3D;重写了equials方法,一定要重写它的hashCode方法&#x3D;&#x3D;</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">有可能一样比如Aa与BB</span><br><span class="line">规律:</span><br><span class="line">	- 两个值的equals相等,那么环境认为两个值一定相等</span><br><span class="line">	- 两个值的equals不相等,两个值的hashcode有可能相等</span><br><span class="line">	- 如果两个值的hashCode相等,两个值不一定相等equals</span><br><span class="line">	- 两个值对象hashCode不相等,两个值一定不equals</span><br><span class="line">在比较中先进行hashCode()比较,然后在进行equeals比较,这样在数量很大的时候可以大大提高效率</span><br><span class="line"></span><br><span class="line">equels是是根据对象的特征进行重写的，有时候特征相同，但<span class="built_in">hash</span>值不同，也不是一个对象。 所以两个都重写才能保障是同一个对象</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>如何完成海量数据的检索</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">倒排索引    关键字 </span><br><span class="line"></span><br><span class="line">关键字的种子URl,然后解析种子url,而一些url中会有一些超链接进行链接,这些超链接就形成了一张大网,一致重复,先检查超链接是否重复过,如果没有重复就解析,重复就跳过.</span><br><span class="line">词是有限,但是组合的语句是无限的,所以就记录词</span><br><span class="line">在解析超链接的时候,就会出现这样的情况,如果是英文就拆分单词,如果是中文分词器就拆分成名字,形成文档矩阵,这些矩阵的重合区域就是需要的内容.</span><br><span class="line">这就是倒排索引</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Error与Exception的区别,CheckExpection与RuntimeExpection的区别</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Error与Exception都是继承了Throwable,而RuntimeException继承Exception.在Java中只有Throwable异常才可以被抛出(throw)或者捕获(catch)</span><br><span class="line"></span><br><span class="line">Error是一些非正常的异常,这种情况下导致程序处以一种不可恢复状态.</span><br><span class="line">Exception是一些正常情况下可以遇到的状态,这种状态的异常可以被捕获或者抛出</span><br><span class="line"></span><br><span class="line">CheckedException的基类是Exception,但是RuntimeException的基类是RuntimeException,但是RuntimeException的父类是Exception</span><br><span class="line"></span><br><span class="line">CheckedException的异常必须捕获或者抛出,但是RuntimeException的的异常就没有相关的要求.这样对于明显不会异常的代码段就不必处理了.</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>如何利用10行代码实现负载均衡</p>
+</li>
+</ol>
+<pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">重定向负载均衡</span><br><span class="line">DNS负载均衡 两次负载均衡, 一次DNS,一次</span><br></pre></td></tr></table></figure>
+</code></pre>
+<ol start="21">
+<li><p>什么是ServerLess</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">字面意思就是:无服务,实际意思就是我们开发者不用去关心服务器,就像我们后端开发者不用考虑内存问题,因为这被java的垃圾回收机制解决</span><br><span class="line"></span><br><span class="line">愿景:</span><br><span class="line"></span><br><span class="line">价值:1. 在很多的服务器中识别和筛选有问题的服务器,打通日志和监控系统,在内存不够的时候会自动分配内存</span><br><span class="line">	2. 可伸缩架构,实现自动弹性,自动扩容</span><br><span class="line">	3. 按照实际资源使用付费</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>Atomiclnteger在高并发下性能不好吗?</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    ```</span><br><span class="line"></span><br><span class="line">23. 线程安全的概念</span><br><span class="line"></span><br><span class="line">    ```bash</span><br><span class="line">    通常我们意义上说的线程安全指的是线程相对安全</span><br><span class="line">    </span><br><span class="line">    一般情况下,线程的安全程度分为两个等级,为线程安全和不是线程安全</span><br><span class="line">    细分为5个等级:</span><br><span class="line">    	- 不可变	final,等修饰的	数据不可以修改,绝对安全</span><br><span class="line">    	- 绝对线程安全	这个定义其实是很严格的，一个类要达到“不管运行时环境如何，调用者都不需要任何额外的同步措施”通常需要付出很大的代价。</span><br><span class="line">    	- 相对线程安全(线程安全)</span><br><span class="line">    		在java语言中，大部分的线程安全类都属于相对线程安全的，例如Vector、HashTable、Collections的synchronizedCollection()方法保证的集合。</span><br><span class="line">    	- 线程兼容(不是线程安全)</span><br><span class="line">    		线程兼容是指对象本身并不是线程安全的，但是可以通过在调用端正确地使用同步手段来保证对象在并发环境下可以安全地使用。Java API中大部分的类都是属于线程兼容的。如与前面的Vector和HashTable相对应的集合类ArrayList和HashMap等。</span><br><span class="line">        - 线程对立(为了防止死锁出现,这种方法已经很少出现了)</span><br></pre></td></tr></table></figure>
+
+<p>线程安全实现方法:</p>
+<p><img src="/2022/11/11/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98/JAVA%E9%9D%A2%E8%AF%95%E9%A2%98%5Cimage-20230210001359438.png" alt="image-20230210001359438"></p>
+</li>
 </ol>
 
     </div>
