@@ -1222,7 +1222,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello,Hexo</title>
+    <title>使用Hexo</title>
     <url>/2022/11/05/hello-world/</url>
     <content><![CDATA[<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="新建一篇文章"><a href="#新建一篇文章" class="headerlink" title="新建一篇文章"></a>新建一篇文章</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -1237,6 +1237,8 @@
 
 
 <h3 id="部署到远程站点"><a href="#部署到远程站点" class="headerlink" title="部署到远程站点"></a>部署到远程站点</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<h3 id="发布运行"><a href="#发布运行" class="headerlink" title="发布运行"></a>发布运行</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
 
 ]]></content>
   </entry>
