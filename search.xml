@@ -1187,7 +1187,25 @@
 <p><img src="/2022/11/09/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220919185624037.png" alt="image-20220919185624037"></p>
 <h2 id="8-简单做一下远程实验-创建一个项目"><a href="#8-简单做一下远程实验-创建一个项目" class="headerlink" title="8.简单做一下远程实验(创建一个项目)"></a>8.简单做一下远程实验(创建一个项目)</h2><p><img src="/2022/11/09/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220919185547570.png" alt="image-20220919185547570"></p>
 <h2 id="9-idea中使用Git"><a href="#9-idea中使用Git" class="headerlink" title="9. idea中使用Git"></a>9. idea中使用Git</h2><h3 id="9-1-在git中新建一个文件"><a href="#9-1-在git中新建一个文件" class="headerlink" title="9.1 在git中新建一个文件"></a>9.1 在git中新建一个文件</h3><p><img src="/2022/11/09/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220919185547570.png" alt="image-20220919185547570"></p>
-<h3 id="9-2克隆仓库到本地"><a href="#9-2克隆仓库到本地" class="headerlink" title="9.2克隆仓库到本地"></a>9.2克隆仓库到本地</h3><p><img src="/2022/11/09/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220919191344690.png" alt="image-20220919191344690"></p>
+<h3 id="9-2克隆仓库到本地"><a href="#9-2克隆仓库到本地" class="headerlink" title="9.2克隆仓库到本地"></a>9.2克隆仓库到本地</h3><p>克隆到本地方法</p>
+<ol>
+<li><p>在放置文件的文件夹中,右键</p>
+</li>
+<li><p><img src="/2022/11/09/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20230314115643247.png" alt="image-20230314115643247"></p>
+</li>
+<li><p>点击Git Bash Here</p>
+<p> <img src="/2022/11/09/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20230314115721784.png" alt="image-20230314115721784"></p>
+</li>
+<li><p>找到需要复制的github项目的复制链接</p>
+<p> <img src="/2022/11/09/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20230314115849182.png" alt="image-20230314115849182"></p>
+</li>
+<li><p>在git窗口输入“git clone 地址”</p>
+<p> <img src="/2022/11/09/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20230314120007147.png" alt="image-20230314120007147"></p>
+</li>
+<li><p>这样就完成了复制</p>
+</li>
+</ol>
+<p><img src="/2022/11/09/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220919191344690.png" alt="image-20220919191344690"></p>
 <h3 id="9-3-在idea中创建一个springboot文件"><a href="#9-3-在idea中创建一个springboot文件" class="headerlink" title="9.3 在idea中创建一个springboot文件"></a>9.3 在idea中创建一个springboot文件</h3><p><img src="/2022/11/09/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220919191530875.png" alt="image-20220919191530875"></p>
 <p>这里的gitxuexi就是</p>
 <h3 id="9-4-把9-2中的文件复制到gitxuexi目录下-替换就行"><a href="#9-4-把9-2中的文件复制到gitxuexi目录下-替换就行" class="headerlink" title="9.4 把9.2中的文件复制到gitxuexi目录下,替换就行"></a>9.4 把9.2中的文件复制到gitxuexi目录下,替换就行</h3><p>这是一种方法,简单</p>
@@ -2537,5 +2555,17 @@
     <title>多线程</title>
     <url>/2023/02/17/%E5%A4%9A%E7%BA%BF%E7%A8%8B-1/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>如何在github查找想要的资源</title>
+    <url>/2023/03/13/%E5%A6%82%E4%BD%95%E5%9C%A8github%E6%9F%A5%E6%89%BE%E6%83%B3%E8%A6%81%E7%9A%84%E8%B5%84%E6%BA%90/</url>
+    <content><![CDATA[<p>in:name example		名字中有“example”</p>
+<p>in:readme example		readme中有“example”</p>
+<p>in:description example	描述中有“example”</p>
+<p>stars:&gt;1000		star&gt;1000		被人添加了星标的</p>
+<p>forks:&gt;1000		fork&gt;1000		分叉</p>
+<p>pushed:&gt;2019-09-01		2019年9月1日后有更新的</p>
+<p>language:java		用Java编写的项目</p>
+]]></content>
   </entry>
 </search>
